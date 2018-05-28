@@ -47,9 +47,15 @@ table {
     background: rgba(244, 237, 233, 0.65);
 }
 .calculator__container{
-    float: left;
+    display: block;
+    margin: 30px auto;
     width: calc(100% - 60px);
-    margin: 30px;
+    max-width: 960px;
+}
+.calculator__container::after{
+    content: "";
+    clear: both;
+    display: table;
 }
 #calculator h4{
     float: left;
@@ -67,4 +73,75 @@ table {
     font-size: 16px;
     line-height: 18px;
     color: #000;
+}
+#calculator h5{
+    float: left;
+    width: 100%;
+    font-size: 17px;
+    margin: 20px 0;
+    font-weight: bold;
+    color: #f06d6e;
+}
+#calculator .questions{
+    float: left;
+    width: 100%;
+    border-top: 1px solid #f06d6e;
+}
+#calculator .question{
+    float: left;
+    width: 100%;
+    border: 1px solid #fff;
+    padding: 10px;
+    box-sizing: border-box;
+}
+#calculator .ask{
+    float: left;
+    width: auto;
+}
+#calculator .icon-ask{
+    float: left;
+    width: 16px;
+    height: 16px;
+    margin-right: 10px;
+    background: url(../img/icon-question.png) center center no-repeat;
+    cursor: help;
+}
+#calculator .ask p{
+    float: left;
+    width: auto;
+    margin: 0;
+    font-size: 16px;
+}
+#calculator .answer{
+    float: right;
+    width: auto;
+}
+#calculator .answer input{
+    float: right;
+}
+#calculator .btn-container{
+    float: left;
+    width: 100%;
+    margin-top: 20px;
+    text-align: center;
+}
+#calculator .calc-btn{
+    display: inline-block;
+    padding: 7px 20px;
+    font-size: 14px;
+    background: #f06d6e;
+    border: 1px solid #f06d6e;
+    color: #fff;
+    cursor: pointer;
+    transition: .3s linear;
+}
+#calculator .calc-btn:hover{
+    background: #fff;
+    color: #f06d6e;
+}
+#calculator .answer p{
+    float: right;
+    width: auto;
+    margin: 0;
+    font-size: 16px;
 }

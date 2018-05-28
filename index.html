@@ -19,7 +19,44 @@
                 Эффективность — прежде всего! </br>
                 Становитесь нашими клиентами и партнерами! 
             </p>
-        </div>
+
+            <h5>Ответьте пожалуйста на следующие вопросы:</h5>
+            <div class="questions">
+                <div class="question">
+                    <div class="ask">
+                        <span class="icon-ask"></span>
+                        <p>Какова у вас посевная площадь?</p>    
+                    </div>
+                    <div class="answer">
+                        <input type="number" id="sowingArea">
+                    </div>
+                </div>
+                <div class="question">
+                    <div class="ask">
+                        <span class="icon-ask"></span>
+                        <p>Какова у вас средняя реализация 1 тонны товарного зерна </p>    
+                    </div>
+                    <div class="answer">
+                        <input type="number" id="realizationTonne">
+                    </div>
+                </div>
+            </div>    
+            <div class="btn-container">
+                <button class="calc-btn" id="btn-calculator">Рассчитать</button>
+            </div>
+            
+            <h5>Итого расходов на новые технологии:</h5>      
+            <div class="questions">
+                <div class="question">
+                    <div class="ask">
+                        <p>Капитальные расходы:</p>    
+                    </div>
+                    <div class="answer">
+                        <p id="output"></p>
+                    </div>
+                </div>
+            </div>    
+        </div>   
     </section>
 <script src="js/calculator.js"></script>
 </body>
