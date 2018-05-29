@@ -43,8 +43,23 @@ table {
 }
 #calculator{
     float: left;
+    position: relative;
     width: 100%;
     background: rgba(244, 237, 233, 0.65);
+}
+#mouseTooltip{
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px;
+    width: 400px;
+    height: auto;
+    font-size: 13px;
+    border: 1px solid rgba(200, 200, 200, 1);
+    box-sizing: border-box;
+    background: rgba(244, 237, 233, 1);
+    z-index: 5;
 }
 .calculator__container{
     display: block;
@@ -105,6 +120,7 @@ table {
     margin-right: 10px;
     background: url(../img/icon-question.png) center center no-repeat;
     cursor: help;
+    font-size: 0;
 }
 #calculator .ask p{
     float: left;
@@ -118,6 +134,7 @@ table {
 }
 #calculator .answer input{
     float: right;
+    width: 100px;
 }
 #calculator .btn-container{
     float: left;

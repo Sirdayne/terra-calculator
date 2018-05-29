@@ -9,6 +9,7 @@
 
 <body>
     <section id="calculator">
+        <div id="mouseTooltip"></div>
         <div class="calculator__container">
             <h4>Вступительная речь к калькулятору: </h4>
             <p>
@@ -24,11 +25,12 @@
             <div class="questions">
                 <div class="question">
                     <div class="ask">
-                        <span class="icon-ask"></span>
+                        <span class="icon-ask">ТОО «TerraPoint» является официальным дилером компании «Техноком» в Казахстане. Это лидер рынка GPS навигации с продуктом «АвтоГРАФ». Система GPS мониторинга сельхозтехники позволяет контролировать передвижение сельскохозяйственной техники в режиме реального времени и сократить количество потребляемого топлива при посевных, поточных и уборочных работах. 
+                            Обеспечивается эффективный контроль и управление парком сельхозтехники предприятия за счет технологий автоматизации логистики, спутникового слежения и GPS мониторинга. </span>
                         <p>Какова у вас посевная площадь?</p>    
                     </div>
                     <div class="answer">
-                        <input type="number" id="sowingArea">
+                        <input type="number" id="inputSowingArea">
                     </div>
                 </div>
                 <div class="question">
@@ -37,12 +39,12 @@
                         <p>Какова у вас средняя реализация 1 тонны товарного зерна </p>    
                     </div>
                     <div class="answer">
-                        <input type="number" id="realizationTonne">
+                        <input type="number" id="inputRealizationTonne">
                     </div>
                 </div>
             </div>    
             <div class="btn-container">
-                <button class="calc-btn" id="btn-calculator">Рассчитать</button>
+                <button class="calc-btn" id="btnCalculator">Рассчитать</button>
             </div>
             
             <h5>Итого расходов на новые технологии:</h5>      
