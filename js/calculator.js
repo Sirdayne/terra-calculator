@@ -1,19 +1,75 @@
 var sum = 0
-iconAsks = document.getElementsByClassName('icon-ask')
+var sumIncomeAnimal = 0
+var sumIncomePlant = 0
+
+var valSowingArea = 0
+var valRealizationTonne = 0
+var valHeads = 0
+var valVehicles = 0
+var valElectronic = 0
+var valVolumeElevator = 0
+var valAverageYield = 0
+var valAverageRefaction = 0
+var valAverageNadoi = 0
+var valAverageRealization = 0
+
+var valCameras = 0
+var valAverageTMC = 0
+var valThiefSeason = 0
+var valPercentTMCSeason = 0
+var valVacancies = 0
+var valVacanciesMonth = 0
+var valPercentNotEffectiveTMC = 0
+var valDesireElectronic = 0
+var valDesireWater = 0
+var valDesireRashod = 0
+var valPercentYield = 0
+var valPercentNadoi = 0
+var valPercentRefaction = 0
+var valPercentTMC = 0 
+
+var iconAsks = document.getElementsByClassName('icon-ask')
+
+function getDataInputs() {
+    valSowingArea = parseInt(inputSowingArea.value)
+    valRealizationTonne = parseInt(inputRealizationTonne.value)
+    valHeads = parseInt(inputHeads.value)
+    valVehicles = parseInt(inputVehicles.value)
+    valElectronic = parseInt(inputElectronic.value)
+    valVolumeElevator = parseInt(inputVolumeElevator.value)
+    valAverageYield = parseInt(inputAverageYield.value)
+    valAverageRefaction = parseInt(inputAverageRefaction.value)
+    valAverageNadoi = parseInt(inputAverageNadoi.value)
+    valAverageRealization = parseInt(inputAverageRealization.value)
+
+    valCameras = parseInt(inputCameras.value)
+    valAverageTMC = parseInt(inputAverageTMC.value)
+    valThiefSeason = parseInt(inputThiefSeason.value)
+    valPercentTMCSeason = parseInt(inputPercentTMCSeason.value)
+    valVacancies = parseInt(inputVacancies.value) 
+    valVacanciesMonth = parseInt(inputVacanciesMonth.value) 
+    valPercentNotEffectiveTMC = parseInt(inputPercentNotEffectiveTMC.value) 
+    valDesireElectronic = parseInt(inputDesireElectronic.value) 
+    valDesireWater = parseInt(inputDesireWater.value) 
+    valDesireRashod = parseInt(inputDesireRashod.value) 
+    valPercentYield = parseInt(inputPercentYield.value) 
+    valPercentNadoi = parseInt(inputPercentNadoi.value) 
+    valPercentRefaction = parseInt(inputPercentRefaction.value) 
+    valPercentTMC = parseInt(inputPercentTMC.value) 
+}
 
 btnCalculator.onclick = function(e) {
-    sum = parseInt(inputSowingArea.value) + 
-    parseInt(inputRealizationTonne.value) +
-    parseInt(inputHeads.value) +
-    parseInt(inputVehicles.value) +
-    parseInt(inputElectronic.value) +
-    parseInt(inputVolumeElevator.value) +
-    parseInt(inputAverageYield.value) +
-    parseInt(inputAverageRefaction.value) +
-    parseInt(inputAverageNadoiPrives.value) +
-    parseInt(inputAverageRealizationMeatMilk.value)
-    console.log(sum)
-    output.innerHTML = sum ? sum : 'данные не заполнены' 
+    getDataInputs()
+    sum = valSowingArea + valPercentTMC
+    console.log(valSowingArea, valPercentTMC, parseInt(inputSowingArea.value))
+    capitalCost.innerHTML = sum ? sum + ' тг.' : 'данные не заполнены' 
+
+    sumIncomeAnimal = valHeads * valAverageNadoi * valAverageRealization * valPercentNadoi
+    incomeAnimal.innerHTML = sumIncomeAnimal ? sumIncomeAnimal + ' тг.' : 'данные не заполнены' 
+    
+    sumIncomePlant = parseInt()
+
+
 }
 
 var OFFSET = 5
