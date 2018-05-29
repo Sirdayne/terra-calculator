@@ -17,13 +17,16 @@ btnCalculator.onclick = function(e) {
 }
 
 var OFFSET = 5
+var x = 0
+var y = 0
 
 for (var i = 0; i < iconAsks.length; i++) {
-    iconAsks[i].onclick = function(e) {
+    iconAsks[i].onmouseover = function(e) {
         mouseTooltip.innerHTML = this.innerHTML
         mouseTooltip.style.display = 'block'
-        mouseTooltip.style.top = e.clientY + OFFSET + 'px'
-        mouseTooltip.style.left = e.clientX + OFFSET + 'px'
+        x = e.pageY + OFFSET
+        y = e.pageX + OFFSET 
+        mouseTooltip.style.transform = 'translate(' + y + 'px,' + x + 'px)'
     }
     iconAsks[i].onmouseout = function(e) {
         mouseTooltip.innerHTML = ''
