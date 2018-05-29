@@ -11,7 +11,7 @@
     <section id="calculator">
         <div id="mouseTooltip"></div>
         <div class="calculator__container">
-            <h4>Вступительная речь к калькулятору: </h4>
+            <h4>Расчет калькулятора</h4>
             <p>
                 Экономический эффект от внедрения средств автоматизации может быть лишь косвенным, так как внедренные средства автоматизации не являются прямым источником дохода, а являются либо вспомогательным средством организации получения прибыли, либо помогают минимизировать затраты.
                 Оценить экономический эффект внедрения технологий TerraPoint поможет наш онлайн калькулятор окупаемости технологий. 
@@ -99,7 +99,7 @@
                         <p>Какова средняя рефакция?</p>    
                     </div>
                     <div class="answer">
-                        <input type="number" id="inputAverageRefaction">
+                        <input type="number" id="inputAverageRefaction" max="100">
                         <p>%</p>
                     </div>
                 </div>
@@ -162,7 +162,7 @@
                         <p>Доля краж ТМЦ за 1 сезон</p>    
                     </div>
                     <div class="answer">
-                        <input type="number" id="">
+                        <input type="number" id="" max="100">
                         <p>%</p>
                     </div>
                 </div>
@@ -192,7 +192,7 @@
                         <p>Доля неээфективных расходов ТМЦ на 1 га, из за "человеческого фактора"</p>    
                     </div>
                     <div class="answer">
-                        <input type="number" id="">
+                        <input type="number" id="" max="100">
                         <p>%</p>
                     </div>
                 </div>
@@ -232,7 +232,7 @@
                         <p>Контроль технологии позволит увеличить урожайность </p>    
                     </div>
                     <div class="answer">
-                        <input type="number" id="">
+                        <input type="number" id="" max="100">
                         <p>%</p>
                     </div>
                 </div>
@@ -242,7 +242,7 @@
                         <p>Контроль технологии позволит увеличить надой/привес</p>    
                     </div>
                     <div class="answer">
-                        <input type="number" id="">
+                        <input type="number" id="" max="100">
                         <p>%</p>
                     </div>
                 </div>
@@ -252,7 +252,7 @@
                         <p>Контроль технологии позволит сократить рефакцию</p>    
                     </div>
                     <div class="answer">
-                        <input type="number" id="">
+                        <input type="number" id="" max="100">
                         <p>%</p>
                     </div>
                 </div>
@@ -262,15 +262,244 @@
                         <p>Контроль технологии позволит сократить расходы на ТМЦ</p>    
                     </div>
                     <div class="answer">
-                        <input type="number" id="">
+                        <input type="number" id="" max="100">
                         <p>%</p>
                     </div>
                 </div>
             </div>    
             <div class="btn-container">
-                <button class="calc-btn" id="btnCalculator">Рассчитать</button>
+                <button class="calc-btn big" id="btnCalculator">Рассчитать</button>
             </div>
             
+            <h5>Что из новых технологий вы бы хотели применить у себя:</h5>
+            <div class="questions">
+                <div class="question">
+                    <div class="ask">
+                        <span class="icon-ask"></span>
+                        <p>GPS-мониторинг техники</p>    
+                    </div>
+                    <div class="answer">
+                        <div class="multi">
+                            <input type="number" id="" value=0>
+                            <span>*</span>
+                            <p>60000</p>
+                        </div>
+                        <input type="number" id="">
+                        <p>тг</p>
+                    </div>
+                </div>
+                <div class="question">
+                    <div class="ask">
+                        <span class="icon-ask"></span>
+                        <p>Автопилоты и курсоуказатели для сельхозтехники</p>    
+                    </div>
+                    <div class="answer">
+                        <div class="multi">
+                            <input type="number" id="" value=0>
+                            <span>*</span>
+                            <p>3500000</p>
+                        </div>
+                        <input type="number" id="">
+                        <p>тг</p>
+                    </div>
+                </div>
+                <div class="question">
+                    <div class="ask">
+                        <span class="icon-ask"></span>
+                        <p>IP видеонаблюдение</p>    
+                    </div>
+                    <div class="answer">
+                        <div class="multi">
+                            <input type="number" id="" value=0>
+                            <span>*</span>
+                            <p>100000</p>
+                        </div>
+                        <input type="number" id="">
+                        <p>тг</p>
+                    </div>
+                </div>
+                <div class="question">
+                    <div class="ask">
+                        <span class="icon-ask"></span>
+                        <p>Контроль, учет движения зерна на току</p>    
+                    </div>
+                    <div class="answer">
+                        <div class="multi">
+                            <input type="number" id="" value=0>
+                            <span>*</span>
+                            <p>3700000</p>
+                        </div>
+                        <input type="number" id="">
+                        <p>тг</p>
+                    </div>
+                </div>
+                <div class="question">
+                    <div class="ask">
+                        <span class="icon-ask"></span>
+                        <p>картирование полей на БПЛА</p>    
+                    </div>
+                    <div class="answer">
+                        <div class="multi">
+                            <input type="number" id="" value=0>
+                            <span>*</span>
+                            <p>112</p>
+                        </div>
+                        <input type="number" id="">
+                        <p>тг</p>
+                    </div>
+                </div>
+                <div class="question">
+                    <div class="ask">
+                        <span class="icon-ask"></span>
+                        <p>контроль вегетации (NDVI) на БПЛА</p>    
+                    </div>
+                    <div class="answer">
+                        <div class="multi">
+                            <input type="number" id="" value=0>
+                            <span>*</span>
+                            <p>150</p>
+                        </div>
+                        <input type="number" id="">
+                        <p>тг</p>
+                    </div>
+                </div>
+                <div class="question">
+                    <div class="ask">
+                        <span class="icon-ask"></span>
+                        <p>Чипирование для идентификации КРС</p>    
+                    </div>
+                    <div class="answer">
+                        <div class="multi">
+                            <input type="number" id="" value=0>
+                            <span>*</span>
+                            <p>1000</p>
+                        </div>
+                        <input type="number" id="">
+                        <p>тг</p>
+                    </div>
+                </div>
+                <div class="question">
+                    <div class="ask">
+                        <span class="icon-ask"></span>
+                        <p>Системы для внутреннего мониторинга здоровья, активности и питания КРС</p>    
+                    </div>
+                    <div class="answer">
+                        <div class="multi">
+                            <input type="number" id="" value=0>
+                            <span>*</span>
+                            <p>60000</p>
+                        </div>
+                        <input type="number" id="">
+                        <p>тг</p>
+                    </div>
+                </div>
+                <div class="question">
+                    <div class="ask">
+                        <span class="icon-ask"></span>
+                        <p>Влагомеры</p>    
+                    </div>
+                    <div class="answer">
+                        <div class="multi">
+                            <input type="number" id="" value=0>
+                            <span>*</span>
+                            <p>3000000</p>
+                        </div>
+                        <input type="number" id="">
+                        <p>тг</p>
+                    </div>
+                </div>
+                <div class="question">
+                    <div class="ask">
+                        <span class="icon-ask"></span>
+                        <p>Расходомеры</p>    
+                    </div>
+                    <div class="answer">
+                        <div class="multi">
+                            <input type="number" id="" value=0>
+                            <span>*</span>
+                            <p>4500000</p>
+                        </div>
+                        <input type="number" id="">
+                        <p>тг</p>
+                    </div>
+                </div>
+                <div class="question">
+                    <div class="ask">
+                        <span class="icon-ask"></span>
+                        <p>Автоматизация элеваторов и сушилок</p>    
+                    </div>
+                    <div class="answer">
+                        <div class="multi">
+                            <input type="number" id="" value=0>
+                            <span>*</span>
+                            <p>2000</p>
+                        </div>
+                        <input type="number" id="">
+                        <p>тг</p>
+                    </div>
+                </div>
+                <div class="question">
+                    <div class="ask">
+                        <span class="icon-ask"></span>
+                        <p>Автоматизация уведомления об отключении оборудования</p>    
+                    </div>
+                    <div class="answer">
+                        <div class="multi">
+                            <input type="number" id="" value=0>
+                            <span>*</span>
+                            <p>60000</p>
+                        </div>
+                        <input type="number" id="">
+                        <p>тг</p>
+                    </div>
+                </div>
+                <div class="question">
+                    <div class="ask">
+                        <span class="icon-ask"></span>
+                        <p>Программное обеспечение по управлению производством</p>    
+                    </div>
+                    <div class="answer">
+                        <div class="multi">
+                            <input type="number" id="" value=0>
+                            <span>*</span>
+                            <p>300</p>
+                        </div>
+                        <input type="number" id="">
+                        <p>тг</p>
+                    </div>
+                </div>
+                <div class="question">
+                    <div class="ask">
+                        <span class="icon-ask"></span>
+                        <p>Внедрение программного обеспечения</p>    
+                    </div>
+                    <div class="answer">
+                        <div class="multi">
+                            <input type="number" id="" value=0>
+                            <span>*</span>
+                            <p>300</p>
+                        </div>
+                        <input type="number" id="">
+                        <p>тг</p>
+                    </div>
+                </div>
+                <div class="question">
+                    <div class="ask">
+                        <span class="icon-ask"></span>
+                        <p>Сервисное обслуживание</p>    
+                    </div>
+                    <div class="answer">
+                        <div class="multi">
+                            <input type="number" id="" value=0>
+                            <span>*</span>
+                            <p>600000</p>
+                        </div>
+                        <input type="number" id="">
+                        <p>тг</p>
+                    </div>
+                </div>
+            </div>
+
             <h5>Итого расходов на новые технологии:</h5>      
             <div class="questions">
                 <div class="question">

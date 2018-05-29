@@ -74,7 +74,7 @@ table {
 }
 .calculator__container{
     display: block;
-    margin: 30px auto;
+    margin: 55px auto;
     width: calc(100% - 60px);
     max-width: 1140px;
 }
@@ -87,10 +87,9 @@ table {
     float: left;
     width: 100%;
     font-size: 26px;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     font-weight: bold;
     color: var(--main-color);
-    text-align: center;
 }
 #calculator p{
     float: left;
@@ -144,11 +143,19 @@ table {
 #calculator .answer input{
     float: left;
     width: 100px;
+    margin: 0 10px;
+}
+#calculator .multi{
+    float: left;
+    width: auto;
+}
+#calculator .multi input{
+    width: 50px;
 }
 #calculator .btn-container{
     float: left;
     width: 100%;
-    margin-top: 20px;
+    margin-top: 30px;
     text-align: center;
 }
 #calculator .calc-btn{
@@ -161,6 +168,9 @@ table {
     cursor: pointer;
     transition: .3s linear;
 }
+#calculator .calc-btn.big{
+    padding: 13px 33px;
+}
 #calculator .calc-btn:hover{
     background: var(--primary-color);
     color: var(--main-color);
@@ -171,9 +181,11 @@ table {
   }
 #calculator .answer p{
     float: left;
-    width: auto;
+    width: 60px;
     margin: 0;
     font-size: 16px;
-    width: 60px;
-    margin-left: 10px;
+}
+#calculator .multi span{
+    float: left;
+    width: 20px
 }
