@@ -133,7 +133,7 @@ table {
     width: auto;
 }
 #calculator .answer input{
-    float: right;
+    float: left;
     width: 100px;
 }
 #calculator .btn-container{
@@ -157,8 +157,10 @@ table {
     color: #f06d6e;
 }
 #calculator .answer p{
-    float: right;
+    float: left;
     width: auto;
     margin: 0;
     font-size: 16px;
+    width: 60px;
+    margin-left: 10px;
 }

@@ -1,9 +1,18 @@
 var sum = 0
 iconAsks = document.getElementsByClassName('icon-ask')
-console.dir(iconAsks)
 
 btnCalculator.onclick = function(e) {
-    sum = parseInt(inputSowingArea.value) + parseInt(inputRealizationTonne.value)
+    sum = parseInt(inputSowingArea.value) + 
+    parseInt(inputRealizationTonne.value) +
+    parseInt(inputHeads.value) +
+    parseInt(inputVehicles.value) +
+    parseInt(inputElectronic.value) +
+    parseInt(inputVolumeElevator.value) +
+    parseInt(inputAverageYield.value) +
+    parseInt(inputAverageRefaction.value) +
+    parseInt(inputAverageNadoiPrives.value) +
+    parseInt(inputAverageRealizationMeatMilk.value)
+    console.log(sum)
     output.innerHTML = sum ? sum : 'данные не заполнены' 
 }
 
@@ -15,7 +24,6 @@ for (var i = 0; i < iconAsks.length; i++) {
         mouseTooltip.style.display = 'block'
         mouseTooltip.style.top = e.clientY + OFFSET + 'px'
         mouseTooltip.style.left = e.clientX + OFFSET + 'px'
-        console.log(e)
     }
     iconAsks[i].onmouseout = function(e) {
         mouseTooltip.innerHTML = ''

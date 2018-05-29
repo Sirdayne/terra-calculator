@@ -25,12 +25,12 @@
             <div class="questions">
                 <div class="question">
                     <div class="ask">
-                        <span class="icon-ask">ТОО «TerraPoint» является официальным дилером компании «Техноком» в Казахстане. Это лидер рынка GPS навигации с продуктом «АвтоГРАФ». Система GPS мониторинга сельхозтехники позволяет контролировать передвижение сельскохозяйственной техники в режиме реального времени и сократить количество потребляемого топлива при посевных, поточных и уборочных работах. 
-                            Обеспечивается эффективный контроль и управление парком сельхозтехники предприятия за счет технологий автоматизации логистики, спутникового слежения и GPS мониторинга. </span>
+                        <span class="icon-ask">подсказка</span>
                         <p>Какова у вас посевная площадь?</p>    
                     </div>
                     <div class="answer">
                         <input type="number" id="inputSowingArea">
+                        <p>га</p>
                     </div>
                 </div>
                 <div class="question">
@@ -40,6 +40,87 @@
                     </div>
                     <div class="answer">
                         <input type="number" id="inputRealizationTonne">
+                        <p>тг</p>
+                    </div>
+                </div>
+                <div class="question">
+                    <div class="ask">
+                        <span class="icon-ask"></span>
+                        <p>Количество голов?</p>    
+                    </div>
+                    <div class="answer">
+                        <input type="number" id="inputHeads">
+                        <p>шт.</p>
+                    </div>
+                </div>
+                <div class="question">
+                    <div class="ask">
+                        <span class="icon-ask"></span>
+                        <p>Количество техники, которые необходимо контролировать?</p>    
+                    </div>
+                    <div class="answer">
+                        <input type="number" id="inputVehicles">
+                        <p>шт.</p>
+                    </div>
+                </div>
+                <div class="question">
+                    <div class="ask">
+                        <span class="icon-ask"></span>
+                        <p>Количество электронных весов</p>    
+                    </div>
+                    <div class="answer">
+                        <input type="number" id="inputElectronic">
+                        <p>шт.</p>
+                    </div>
+                </div>
+                <div class="question">
+                    <div class="ask">
+                        <span class="icon-ask"></span>
+                        <p>Объем хранения зерна  на элеваторе</p>    
+                    </div>
+                    <div class="answer">
+                        <input type="number" id="inputVolumeElevator">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="question">
+                    <div class="ask">
+                        <span class="icon-ask"></span>
+                        <p>Какова средняя урожайность?</p>    
+                    </div>
+                    <div class="answer">
+                        <input type="number" id="inputAverageYield">
+                        <p>ц/га</p>
+                    </div>
+                </div>
+                <div class="question">
+                    <div class="ask">
+                        <span class="icon-ask"></span>
+                        <p>Какова средняя рефакция?</p>    
+                    </div>
+                    <div class="answer">
+                        <input type="number" id="inputAverageRefaction">
+                        <p>%</p>
+                    </div>
+                </div>
+                <div class="question">
+                    <div class="ask">
+                        <span class="icon-ask"></span>
+                        <p>Каков средний надой/привес 1 головы в год?</p>    
+                    </div>
+                    <div class="answer">
+                        <input type="number" id="inputAverageNadoiPrives">
+                        <p></p>
+                    </div>
+                </div>                                                                                    
+                <div class="question">
+                    <div class="ask">
+                        <span class="icon-ask"></span>
+                        <p>Какова средняя реализация 1 единицы мясо/молока?</p>    
+                    </div>
+                    <div class="answer">
+                        <input type="number" id="inputAverageRealizationMeatMilk">
+                        <p></p>
                     </div>
                 </div>
             </div>    
@@ -54,7 +135,7 @@
                         <p>Капитальные расходы:</p>    
                     </div>
                     <div class="answer">
-                        <p id="output"></p>
+                        <div id="output"></div>
                     </div>
                 </div>
             </div>    
