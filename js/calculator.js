@@ -49,6 +49,10 @@ var sumIncomeThief = 0
 var sumTotalIncome = 0
 
 var sumCapitalCost = 0
+var sumConstantCost = 0
+var sumTotalCost = 0
+
+var sumRecoupment = 0
 
 var sumMultiGPS = 0
 
@@ -117,8 +121,12 @@ function parseBool(tag) {
     return tag.checked
 }
 
-function setHTML(tag, sum) {
-    tag.innerHTML = sum ? sum + ' тг.' : 'нет данных'
+function setHTML(tag, sum, currency) {
+    if (currency){
+        tag.innerHTML = sum ? sum: 'нет данных'
+    } else {
+        tag.innerHTML = sum ? sum + ' тг.' : 'нет данных'
+    }   
 }
 
 /* EVENTS */
@@ -189,6 +197,15 @@ btnCalculator.onclick = function(e) {
 
     sumCapitalCost = sumMultiGPS + sumMultiPilot + sumMultiVideo + sumMultiControl + sumMultiKart + sumMultiChip + sumMultiMonitor + sumMultiWater + sumMultiRashod + sumMultiElevator + sumMultiProg
     setHTML(capitalCost, sumCapitalCost)
+
+    sumConstantCost = sumMultiNDVI + sumMultiSoftware + sumMultiNotification + sumMultiSoftware
+    setHTML(constantCost, sumConstantCost)
+
+    sumTotalCost = sumCapitalCost + sumConstantCost
+    setHTML(totalCost, sumTotalCost)
+
+    sumRecoupment = sumTotalIncome / sumTotalCost
+    setHTML(recoupment, sumRecoupment, true)
 }
 
 var OFFSET = 5
