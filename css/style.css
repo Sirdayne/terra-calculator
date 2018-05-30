@@ -105,6 +105,9 @@ table {
     font-weight: bold;
     color: var(--main-color);
 }
+#calculator h5 .total{
+    float: right;
+}
 #calculator .questions{
     float: left;
     width: 100%;

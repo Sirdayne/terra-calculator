@@ -1,6 +1,9 @@
 var sum = 0
 var sumIncomeAnimal = 0
 var sumIncomePlant = 0
+var sumIncomeHuman = 0
+var sumIncomeThief = 0
+var sumTotalIncome = 0
 
 var valSowingArea = 0
 var valRealizationTonne = 0
@@ -30,6 +33,13 @@ var valPercentTMC = 0
 
 var iconAsks = document.getElementsByClassName('icon-ask')
 
+function setDataInputs() {
+    var inputs = document.getElementsByTagName('input')
+    for (var j = 0; j < inputs.length; j++){
+        inputs[j].value = j
+    }
+}
+
 function getDataInputs() {
     valSowingArea = parseInt(inputSowingArea.value)
     valRealizationTonne = parseInt(inputRealizationTonne.value)
@@ -58,18 +68,30 @@ function getDataInputs() {
     valPercentTMC = parseInt(inputPercentTMC.value) 
 }
 
+function setIncomeHTML(tag, sum) {
+    tag.innerHTML = sum ? sum + ' тг.' : 'данные не заполнены'
+}
+
 btnCalculator.onclick = function(e) {
+    setDataInputs()
     getDataInputs()
     sum = valSowingArea + valPercentTMC
-    console.log(valSowingArea, valPercentTMC, parseInt(inputSowingArea.value))
     capitalCost.innerHTML = sum ? sum + ' тг.' : 'данные не заполнены' 
 
     sumIncomeAnimal = valHeads * valAverageNadoi * valAverageRealization * valPercentNadoi
-    incomeAnimal.innerHTML = sumIncomeAnimal ? sumIncomeAnimal + ' тг.' : 'данные не заполнены' 
+    setIncomeHTML(incomeAnimal, sumIncomeAnimal)
+
+    sumIncomePlant = valAverageYield * valPercentYield * valSowingArea / 10 * valRealizationTonne + (valAverageYield + valAverageYield * valPercentYield * valSowingArea / 10) * valAverageRefaction * valPercentRefaction * valRealizationTonne + valAverageTMC * valPercentTMC * valSowingArea 
+    setIncomeHTML(incomePlant, sumIncomePlant)
     
-    sumIncomePlant = parseInt()
+    sumIncomeHuman = valVacanciesMonth * 12 * valVacancies + valAverageTMC * valPercentNotEffectiveTMC * valSowingArea
+    setIncomeHTML(incomeHuman, sumIncomeHuman)
+    
+    sumIncomeThief = valThiefSeason * 35 * valRealizationTonne + valAverageTMC * valPercentTMCSeason * valSowingArea
+    setIncomeHTML(incomeThief, sumIncomeThief)
 
-
+    sumTotalIncome = sumIncomeAnimal + sumIncomeHuman + sumIncomePlant + sumIncomeThief 
+    setIncomeHTML(incomeTotal, sumTotalIncome)
 }
 
 var OFFSET = 5
