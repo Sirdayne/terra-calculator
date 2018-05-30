@@ -27,6 +27,20 @@ var valPercentRefaction = 0
 var valPercentTMC = 0 
 
 var boolGPS = 0
+var boolPilot = 0
+var boolVideo = 0
+var boolControl = 0
+var boolKart = 0
+var boolNDVI = 0
+var boolChip = 0
+var boolMonitor = 0
+var boolWater = 0
+var boolRashod = 0
+var boolElevator = 0
+var boolNotification = 0
+var boolSoftware = 0
+var boolProg = 0
+var boolService = 0
 
 var sum = 0
 var sumIncomeAnimal = 0
@@ -67,6 +81,7 @@ function getDataInputs() {
     valPercentTMC = parseValue(inputPercentTMC) 
 
     boolGPS = parseBool(checkGPS)
+    boolPilot = parseBool(checkPilot)
 }
 
 function setDataInputs() {
@@ -108,7 +123,7 @@ btnCalculator.onclick = function(e) {
     setHTML(incomePlant, sumIncomePlant)
     
     sumIncomeHuman = valVacanciesMonth * 12 * valVacancies + valAverageTMC * valPercentNotEffectiveTMC * valSowingArea
-    setIncomeHTML(incomeHuman, sumIncomeHuman)
+    setHTML(incomeHuman, sumIncomeHuman)
     
     sumIncomeThief = valThiefSeason * 35 * valRealizationTonne + valAverageTMC * valPercentTMCSeason * valSowingArea
     setHTML(incomeThief, sumIncomeThief)
@@ -118,7 +133,50 @@ btnCalculator.onclick = function(e) {
 
     sumMultiGPS = boolGPS ? 60000 * valVehicles : 0
     setHTML(multiGPS, sumMultiGPS)
+
+    sumMultiPilot = boolPilot ? 3500000 * valVehicles : 0
+    setHTML(multiPilot, sumMultiPilot)
+
+    sumMultiVideo = boolVideo ? 0 : 0
+    setHTML(multiVideo, sumMultiVideo)
+
+    sumMultiControl = boolControl ? 0 : 0
+    setHTML(multiControl, sumMultiControl)
+
+    sumMultiKart = boolKart ? 0 : 0
+    setHTML(multiKart, sumMultiKart)
+
+    sumMultiNDVI = boolNDVI ? 0 : 0
+    setHTML(multiNDVI, sumMultiNDVI)
+
+    sumMultiChip = boolChip ? 0 : 0
+    setHTML(multiChip, sumMultiChip)
+
+    sumMultiMonitor = boolMonitor ? 0 : 0
+    setHTML(multiMonitor, sumMultiMonitor)
+
+    sumMultiWater = boolWater ? 0 : 0
+    setHTML(multiWater, sumMultiWater)
+
+    sumMultiRashod = boolRashod ? 0 : 0
+    setHTML(multiRashod, sumMultiRashod)
+
+    sumMultiElevator = boolElevator ? 0 : 0
+    setHTML(multiElevator, sumMultiElevator)
+
+    sumMultiNotification = boolNotification ? 0 : 0
+    setHTML(multiNotification, sumMultiNotification)
+
+    sumMultiSoftware = boolSoftware ? 0 : 0
+    setHTML(multiSoftware, sumMultiSoftware)
+
+    sumMultiProg = boolProg ? 0 : 0
+    setHTML(multiProg, sumMultiProg)
+
+    sumMultiService = boolService ? 0 : 0
+    setHTML(multiService, sumMultiService)
 }
+
 
 var OFFSET = 5
 var x = 0
