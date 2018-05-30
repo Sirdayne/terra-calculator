@@ -42,12 +42,13 @@ var boolSoftware = 0
 var boolProg = 0
 var boolService = 0
 
-var sum = 0
 var sumIncomeAnimal = 0
 var sumIncomePlant = 0
 var sumIncomeHuman = 0
 var sumIncomeThief = 0
 var sumTotalIncome = 0
+
+var sumCapitalCost = 0
 
 var sumMultiGPS = 0
 
@@ -126,9 +127,6 @@ btnCalculator.onclick = function(e) {
     setDataInputs()
     getDataInputs()
 
-    sum = valSowingArea + valPercentTMC
-    setHTML(capitalCost, sum)
-
     sumIncomeAnimal = valHeads * valAverageNadoi * valAverageRealization * valPercentNadoi
     setHTML(incomeAnimal, sumIncomeAnimal)
 
@@ -151,7 +149,6 @@ btnCalculator.onclick = function(e) {
     setHTML(multiPilot, sumMultiPilot)
 
     sumMultiVideo = boolVideo ? 1000000 * valCameras : 0
-    console.log(sumMultiVideo)
     setHTML(multiVideo, sumMultiVideo)
 
     sumMultiControl = boolControl ? 3700000 * (valElectronic + valDesireElectronic) : 0
@@ -189,8 +186,10 @@ btnCalculator.onclick = function(e) {
 
     sumMultiService = boolService ? 0 : 0
     setHTML(multiService, sumMultiService)
-}
 
+    sumCapitalCost = sumMultiGPS + sumMultiPilot + sumMultiVideo + sumMultiControl + sumMultiKart + sumMultiChip + sumMultiMonitor + sumMultiWater + sumMultiRashod + sumMultiElevator + sumMultiProg
+    setHTML(capitalCost, sumCapitalCost)
+}
 
 var OFFSET = 5
 var x = 0
