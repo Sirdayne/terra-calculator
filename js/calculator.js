@@ -1,9 +1,4 @@
-var sum = 0
-var sumIncomeAnimal = 0
-var sumIncomePlant = 0
-var sumIncomeHuman = 0
-var sumIncomeThief = 0
-var sumTotalIncome = 0
+/* DATA */
 
 var valSowingArea = 0
 var valRealizationTonne = 0
@@ -31,67 +26,98 @@ var valPercentNadoi = 0
 var valPercentRefaction = 0
 var valPercentTMC = 0 
 
+var boolGPS = 0
+
+var sum = 0
+var sumIncomeAnimal = 0
+var sumIncomePlant = 0
+var sumIncomeHuman = 0
+var sumIncomeThief = 0
+var sumTotalIncome = 0
+
+var sumMultiGPS = 0
+
 var iconAsks = document.getElementsByClassName('icon-ask')
+
+function getDataInputs() {
+    valSowingArea = parseValue(inputSowingArea)
+    valRealizationTonne = parseValue(inputRealizationTonne)
+    valHeads = parseValue(inputHeads)
+    valVehicles = parseValue(inputVehicles)
+    valElectronic = parseValue(inputElectronic)
+    valVolumeElevator = parseValue(inputVolumeElevator)
+    valAverageYield = parseValue(inputAverageYield)
+    valAverageRefaction = parseValue(inputAverageRefaction)
+    valAverageNadoi = parseValue(inputAverageNadoi)
+    valAverageRealization = parseValue(inputAverageRealization)
+
+    valCameras = parseValue(inputCameras)
+    valAverageTMC = parseValue(inputAverageTMC)
+    valThiefSeason = parseValue(inputThiefSeason)
+    valPercentTMCSeason = parseValue(inputPercentTMCSeason)
+    valVacancies = parseValue(inputVacancies) 
+    valVacanciesMonth = parseValue(inputVacanciesMonth) 
+    valPercentNotEffectiveTMC = parseValue(inputPercentNotEffectiveTMC) 
+    valDesireElectronic = parseValue(inputDesireElectronic) 
+    valDesireWater = parseValue(inputDesireWater) 
+    valDesireRashod = parseValue(inputDesireRashod) 
+    valPercentYield = parseValue(inputPercentYield) 
+    valPercentNadoi = parseValue(inputPercentNadoi) 
+    valPercentRefaction = parseValue(inputPercentRefaction) 
+    valPercentTMC = parseValue(inputPercentTMC) 
+
+    boolGPS = parseBool(checkGPS)
+}
 
 function setDataInputs() {
     var inputs = document.getElementsByTagName('input')
     for (var j = 0; j < inputs.length; j++){
-        inputs[j].value = j
+        if (inputs[j].type === 'number'){
+            inputs[j].value = j
+        } else {
+            inputs[j].checked = true
+        }
     }
 }
 
-function getDataInputs() {
-    valSowingArea = parseInt(inputSowingArea.value)
-    valRealizationTonne = parseInt(inputRealizationTonne.value)
-    valHeads = parseInt(inputHeads.value)
-    valVehicles = parseInt(inputVehicles.value)
-    valElectronic = parseInt(inputElectronic.value)
-    valVolumeElevator = parseInt(inputVolumeElevator.value)
-    valAverageYield = parseInt(inputAverageYield.value)
-    valAverageRefaction = parseInt(inputAverageRefaction.value)
-    valAverageNadoi = parseInt(inputAverageNadoi.value)
-    valAverageRealization = parseInt(inputAverageRealization.value)
-
-    valCameras = parseInt(inputCameras.value)
-    valAverageTMC = parseInt(inputAverageTMC.value)
-    valThiefSeason = parseInt(inputThiefSeason.value)
-    valPercentTMCSeason = parseInt(inputPercentTMCSeason.value)
-    valVacancies = parseInt(inputVacancies.value) 
-    valVacanciesMonth = parseInt(inputVacanciesMonth.value) 
-    valPercentNotEffectiveTMC = parseInt(inputPercentNotEffectiveTMC.value) 
-    valDesireElectronic = parseInt(inputDesireElectronic.value) 
-    valDesireWater = parseInt(inputDesireWater.value) 
-    valDesireRashod = parseInt(inputDesireRashod.value) 
-    valPercentYield = parseInt(inputPercentYield.value) 
-    valPercentNadoi = parseInt(inputPercentNadoi.value) 
-    valPercentRefaction = parseInt(inputPercentRefaction.value) 
-    valPercentTMC = parseInt(inputPercentTMC.value) 
+function parseValue(tag) {
+    return parseInt(tag.value)
 }
 
-function setIncomeHTML(tag, sum) {
-    tag.innerHTML = sum ? sum + ' тг.' : 'данные не заполнены'
+function parseBool(tag) {
+    return tag.checked
 }
+
+function setHTML(tag, sum) {
+    tag.innerHTML = sum ? sum + ' тг.' : 'нет данных'
+}
+
+/* EVENTS */
 
 btnCalculator.onclick = function(e) {
     setDataInputs()
     getDataInputs()
+
     sum = valSowingArea + valPercentTMC
-    capitalCost.innerHTML = sum ? sum + ' тг.' : 'данные не заполнены' 
+    setHTML(capitalCost, sum)
 
     sumIncomeAnimal = valHeads * valAverageNadoi * valAverageRealization * valPercentNadoi
-    setIncomeHTML(incomeAnimal, sumIncomeAnimal)
+    setHTML(incomeAnimal, sumIncomeAnimal)
 
     sumIncomePlant = valAverageYield * valPercentYield * valSowingArea / 10 * valRealizationTonne + (valAverageYield + valAverageYield * valPercentYield * valSowingArea / 10) * valAverageRefaction * valPercentRefaction * valRealizationTonne + valAverageTMC * valPercentTMC * valSowingArea 
-    setIncomeHTML(incomePlant, sumIncomePlant)
+    setHTML(incomePlant, sumIncomePlant)
     
     sumIncomeHuman = valVacanciesMonth * 12 * valVacancies + valAverageTMC * valPercentNotEffectiveTMC * valSowingArea
     setIncomeHTML(incomeHuman, sumIncomeHuman)
     
     sumIncomeThief = valThiefSeason * 35 * valRealizationTonne + valAverageTMC * valPercentTMCSeason * valSowingArea
-    setIncomeHTML(incomeThief, sumIncomeThief)
+    setHTML(incomeThief, sumIncomeThief)
 
     sumTotalIncome = sumIncomeAnimal + sumIncomeHuman + sumIncomePlant + sumIncomeThief 
-    setIncomeHTML(incomeTotal, sumTotalIncome)
+    setHTML(incomeTotal, sumTotalIncome)
+
+    sumMultiGPS = boolGPS ? 60000 * valVehicles : 0
+    setHTML(multiGPS, sumMultiGPS)
 }
 
 var OFFSET = 5

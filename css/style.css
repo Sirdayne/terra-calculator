@@ -148,12 +148,25 @@ table {
     width: 100px;
     margin: 0 10px;
 }
-#calculator .multi{
+#calculator .check{
     float: left;
     width: auto;
 }
-#calculator .multi input{
-    width: 50px;
+#calculator .check input{
+    float: left;
+    width: auto;
+    margin: 1px 20px 0 0;
+}
+#calculator .check .unit{
+    float: left;
+    width: 150px
+}
+#calculator .check .overall{
+    float: left;
+    width: 150px;
+    height: 16px;
+    line-height: 16px;
+    border-bottom: 1px solid #323232;
 }
 #calculator .btn-container{
     float: left;
@@ -187,8 +200,4 @@ table {
     width: 60px;
     margin: 0;
     font-size: 16px;
-}
-#calculator .multi span{
-    float: left;
-    width: 20px
 }
