@@ -122,11 +122,17 @@ function parseBool(tag) {
 }
 
 function setHTML(tag, sum, currency) {
-    if (currency){
-        tag.innerHTML = sum ? sum: 'нет данных'
+    if (sum) {
+        //.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,')
+        if (currency){
+            tag.innerHTML = sum
+        } else {
+            sum = sum.toFixed().replace(/(\d)(?=(\d{3})+(,|$))/g, '$1,');
+            tag.innerHTML = sum + ' тг.'
+        }
     } else {
-        tag.innerHTML = sum ? sum + ' тг.' : 'нет данных'
-    }   
+        tag.innerHTML = '-'
+    }
 }
 
 function countCheckboxes() {
