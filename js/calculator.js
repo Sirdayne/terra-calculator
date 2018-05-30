@@ -55,6 +55,7 @@ var sumTotalCost = 0
 var sumRecoupment = 0
 
 var sumMultiGPS = 0
+var checkCounter = 0
 
 var iconAsks = document.getElementsByClassName('icon-ask')
 
@@ -99,7 +100,6 @@ function getDataInputs() {
     boolNotification = parseBool(checkNotification)
     boolSoftware = parseBool(checkSoftware)
     boolProg = parseBool(checkProg)
-    boolService = parseBool(checkService)
 }
 
 function setDataInputs() {
@@ -108,7 +108,7 @@ function setDataInputs() {
         if (inputs[j].type === 'number'){
             inputs[j].value = j + 1
         } else {
-            inputs[j].checked = true
+            //inputs[j].checked = true
         }
     }
 }
@@ -127,6 +127,16 @@ function setHTML(tag, sum, currency) {
     } else {
         tag.innerHTML = sum ? sum + ' тг.' : 'нет данных'
     }   
+}
+
+function countCheckboxes() {
+    var inputs = document.getElementsByTagName('input')
+    checkCounter = 0
+    for (var j = 0; j < inputs.length; j++){
+        if (inputs[j].type === 'checkbox' && inputs[j].checked) {
+            checkCounter++
+        }
+    }
 }
 
 /* EVENTS */
@@ -192,13 +202,20 @@ btnCalculator.onclick = function(e) {
     sumMultiProg = boolProg ? 300 * valSowingArea : 0
     setHTML(multiProg, sumMultiProg)
 
-    sumMultiService = boolService ? 0 : 0
+    countCheckboxes()
+
+    sumMultiService = 600000
+
+    if (checkCounter > 2) {
+        sumMultiService = sumMultiService * checkCounter / 2
+    } 
+     
     setHTML(multiService, sumMultiService)
 
     sumCapitalCost = sumMultiGPS + sumMultiPilot + sumMultiVideo + sumMultiControl + sumMultiKart + sumMultiChip + sumMultiMonitor + sumMultiWater + sumMultiRashod + sumMultiElevator + sumMultiProg
     setHTML(capitalCost, sumCapitalCost)
 
-    sumConstantCost = sumMultiNDVI + sumMultiSoftware + sumMultiNotification + sumMultiSoftware
+    sumConstantCost = sumMultiNDVI + sumMultiSoftware + sumMultiNotification + sumMultiService
     setHTML(constantCost, sumConstantCost)
 
     sumTotalCost = sumCapitalCost + sumConstantCost
