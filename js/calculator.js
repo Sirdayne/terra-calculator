@@ -82,13 +82,26 @@ function getDataInputs() {
 
     boolGPS = parseBool(checkGPS)
     boolPilot = parseBool(checkPilot)
+    boolVideo = parseBool(checkVideo)
+    boolControl = parseBool(checkControl)
+    boolKart = parseBool(checkKart)
+    boolNDVI = parseBool(checkNDVI)
+    boolChip = parseBool(checkChip)
+    boolMonitor = parseBool(checkMonitor)
+    boolWater = parseBool(checkWater)
+    boolRashod = parseBool(checkRashod)
+    boolElevator = parseBool(checkElevator)
+    boolNotification = parseBool(checkNotification)
+    boolSoftware = parseBool(checkSoftware)
+    boolProg = parseBool(checkProg)
+    boolService = parseBool(checkService)
 }
 
 function setDataInputs() {
     var inputs = document.getElementsByTagName('input')
     for (var j = 0; j < inputs.length; j++){
         if (inputs[j].type === 'number'){
-            inputs[j].value = j
+            inputs[j].value = j + 1
         } else {
             inputs[j].checked = true
         }
@@ -137,40 +150,41 @@ btnCalculator.onclick = function(e) {
     sumMultiPilot = boolPilot ? 3500000 * valVehicles : 0
     setHTML(multiPilot, sumMultiPilot)
 
-    sumMultiVideo = boolVideo ? 0 : 0
+    sumMultiVideo = boolVideo ? 1000000 * valCameras : 0
+    console.log(sumMultiVideo)
     setHTML(multiVideo, sumMultiVideo)
 
-    sumMultiControl = boolControl ? 0 : 0
+    sumMultiControl = boolControl ? 3700000 * (valElectronic + valDesireElectronic) : 0
     setHTML(multiControl, sumMultiControl)
 
-    sumMultiKart = boolKart ? 0 : 0
+    sumMultiKart = boolKart ? 112 * valSowingArea : 0
     setHTML(multiKart, sumMultiKart)
 
-    sumMultiNDVI = boolNDVI ? 0 : 0
+    sumMultiNDVI = boolNDVI ? 150 * valSowingArea * 3 : 0
     setHTML(multiNDVI, sumMultiNDVI)
 
-    sumMultiChip = boolChip ? 0 : 0
+    sumMultiChip = boolChip ? 1000 * valHeads : 0
     setHTML(multiChip, sumMultiChip)
 
-    sumMultiMonitor = boolMonitor ? 0 : 0
+    sumMultiMonitor = boolMonitor ? 60000 * valHeads : 0
     setHTML(multiMonitor, sumMultiMonitor)
 
-    sumMultiWater = boolWater ? 0 : 0
+    sumMultiWater = boolWater ? 3000000 * valDesireWater : 0
     setHTML(multiWater, sumMultiWater)
 
-    sumMultiRashod = boolRashod ? 0 : 0
+    sumMultiRashod = boolRashod ? 4500000 * valDesireRashod : 0
     setHTML(multiRashod, sumMultiRashod)
 
-    sumMultiElevator = boolElevator ? 0 : 0
+    sumMultiElevator = boolElevator ? 2000 * valVolumeElevator : 0
     setHTML(multiElevator, sumMultiElevator)
 
-    sumMultiNotification = boolNotification ? 0 : 0
+    sumMultiNotification = boolNotification ? 60000 : 0
     setHTML(multiNotification, sumMultiNotification)
 
-    sumMultiSoftware = boolSoftware ? 0 : 0
+    sumMultiSoftware = boolSoftware ? 300 * valSowingArea : 0
     setHTML(multiSoftware, sumMultiSoftware)
 
-    sumMultiProg = boolProg ? 0 : 0
+    sumMultiProg = boolProg ? 300 * valSowingArea : 0
     setHTML(multiProg, sumMultiProg)
 
     sumMultiService = boolService ? 0 : 0
