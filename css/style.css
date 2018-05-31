@@ -61,7 +61,7 @@ table {
 #calculator .margin-top{
     margin-top: 25px;
 }
-#calculator #modalCalc{
+#calculator .modal-calc{
     position: fixed;
     display: none;
     top: 150px;
@@ -75,7 +75,10 @@ table {
     background: var(--primary-color);
     border: 1px solid var(--font-color);
     color: var(--main-color);
-    transition: .3 linear;
+}
+#calculator #modal-calc-err{
+    border: 1px solid rgb(170, 0, 0);
+    color: #323232;
 }
 #calculator .spoiler-calc{
     display: none

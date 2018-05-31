@@ -160,7 +160,7 @@ function countCheckboxes() {
 /* EVENTS */
 
 btnCalculator.onclick = function(e) {
-    setDataInputs()
+    //setDataInputs()
     getDataInputs()
 
     //GPS-мониторинг техники
@@ -290,37 +290,68 @@ var body = ''
 btnPost.onclick = function(e) {
     getDataInputs()
 
-    addStr('ФИО=', strName)
-    addStr('&Телефон=', strPhone)
-    addStr('&Должность=', strPos)
-    addStr('&Организация=', strOrg)
-    addStr('&Краткое_описание=', strText)
-    addStr('&GPS-мониторинг техники=', sumMultiGPS)
-    addStr('&Автопилоты и курсоуказатели для сельхозтехники=', sumMultiPilot)
-    addStr('&IP видеонаблюдение=', sumMultiVideo)
-    addStr('&Контроль, учет движения зерна на току=', sumMultiControl)
-    addStr('&Картирование полей на БПЛА=', sumMultiKart)
-    addStr('&Контроль вегетации (NDVI) на БПЛА=', sumMultiNDVI)
-    addStr('&Чипирование для идентификации КРС=', sumMultiChip)
-    addStr('&Системы для внутреннего мониторинга здоровья, активности и питания КРС=', sumMultiMonitor)
-    addStr('&Влагомеры=', sumMultiWater)
-    addStr('&Расходомеры=', sumMultiRashod)
-    addStr('&Автоматизация элеваторов и сушилок=', sumMultiElevator)
-    addStr('&Автоматизация уведомления об отключении оборудования=', sumMultiNotification)
-    addStr('&Программное обеспечение по управлению производством=', sumMultiSoftware)
-    addStr('&Внедрение программного обеспечения=', sumMultiProg)
-    addStr('&Сервисное обслуживание=', sumMultiService)
-    addStr('&Итого расходов на новые технологии=', sumTotalCost)
-    addStr('&Капитальные расходы=', sumCapitalCost)
-    addStr('&Постоянные расходы=', sumConstantCost)
-    addStr('&Итого доходов на новые технологии за сезон=', sumTotalIncome)
-    addStr('&Животноводство=', sumIncomeAnimal)
-    addStr('&Растениеводство=', sumIncomePlant)
-    addStr('&Человеческий_фактор=', sumIncomeHuman)
-    addStr('&Кражи=', sumIncomeThief)
-    addStr('&Окупаемость (количество сезонов)=', sumRecoupment)
+    try {
+        addStr('ФИО=', strName)
+        addStr('&Телефон=', strPhone)
+        addStr('&Должность=', strPos)
+        addStr('&Организация=', strOrg)
+        addStr('&Краткое_описание=', strText)
 
-    postData(body)
+        addStr('&Какова у вас посевная площадь?=', valSowingArea)
+        addStr('&Какова у вас средняя реализация 1 тонны товарного зерна=', valRealizationTonne)
+        addStr('&Количество голов?=', valHeads)
+        addStr('&Количество техники, которые необходимо контролировать?=', valVehicles)
+        addStr('&Количество электронных весов=', valElectronic)
+        addStr('&Объем хранения зерна на элеваторе=', valVolumeElevator)
+        addStr('&Какова средняя урожайность?=', valAverageYield)
+        addStr('&Какова средняя рефакция?=', valAverageRefaction)
+        addStr('&Каков средний надой/привес 1 головы в год?=', valAverageNadoi)
+        addStr('&Какова средняя реализация 1 единицы мясо/молока?=', valAverageRealization)
+
+        addStr('&Сколько камер видеонаблюдения вы хотели бы установить=', valCameras)
+        addStr('&Средние расходы ТМЦ на 1 га (ГСМ, семена, химия)=', valAverageTMC)
+        addStr('&Количество краж зерна в машинах за 1 сезон=', valThiefSeason)
+        addStr('&Доля краж ТМЦ за 1 сезон=', valPercentTMCSeason)
+        addStr('&Количество вакансий на более квалифицированный персонал=', valVacancies)
+        addStr('&Расходы на 1 вакансию в месяц (зарплата с налогами, проживание, питание)=', valVacanciesMonth)
+        addStr('&Доля неээфективных расходов ТМЦ на 1 га, из за "человеческого фактора"=', valPercentNotEffectiveTMC)
+        addStr('&Сколько электронных весов вы бы хотели установить=', valDesireElectronic)
+        addStr('&Сколько влагомеров вы бы хотели установить на элеваторе=', valDesireWater)
+        addStr('&Сколько расходомеров вы бы хотели установить на элеваторе=', valDesireRashod)
+        addStr('&Контроль технологии позволит увеличить урожайность=', valPercentYield)
+        addStr('&Контроль технологии позволит увеличить надой/привес=', valPercentNadoi)
+        addStr('&Контроль технологии позволит сократить рефакцию=', valPercentRefaction)
+        addStr('&Контроль технологии позволит сократить расходы на ТМЦ=', valPercentTMC)
+        
+        addStr('&GPS-мониторинг техники=', sumMultiGPS)
+        addStr('&Автопилоты и курсоуказатели для сельхозтехники=', sumMultiPilot)
+        addStr('&IP видеонаблюдение=', sumMultiVideo)
+        addStr('&Контроль, учет движения зерна на току=', sumMultiControl)
+        addStr('&Картирование полей на БПЛА=', sumMultiKart)
+        addStr('&Контроль вегетации (NDVI) на БПЛА=', sumMultiNDVI)
+        addStr('&Чипирование для идентификации КРС=', sumMultiChip)
+        addStr('&Системы для внутреннего мониторинга здоровья, активности и питания КРС=', sumMultiMonitor)
+        addStr('&Влагомеры=', sumMultiWater)
+        addStr('&Расходомеры=', sumMultiRashod)
+        addStr('&Автоматизация элеваторов и сушилок=', sumMultiElevator)
+        addStr('&Автоматизация уведомления об отключении оборудования=', sumMultiNotification)
+        addStr('&Программное обеспечение по управлению производством=', sumMultiSoftware)
+        addStr('&Внедрение программного обеспечения=', sumMultiProg)
+        addStr('&Сервисное обслуживание=', sumMultiService)
+        addStr('&Итого расходов на новые технологии=', sumTotalCost)
+        addStr('&Капитальные расходы=', sumCapitalCost)
+        addStr('&Постоянные расходы=', sumConstantCost)
+        addStr('&Итого доходов на новые технологии за сезон=', sumTotalIncome)
+        addStr('&Животноводство=', sumIncomeAnimal)
+        addStr('&Растениеводство=', sumIncomePlant)
+        addStr('&Человеческий_фактор=', sumIncomeHuman)
+        addStr('&Кражи=', sumIncomeThief)
+        addStr('&Окупаемость (количество сезонов)=', sumRecoupment)
+
+        postData(body)
+    } catch(error) {
+        showModalError()
+    }
 }
 
 function addStr(name, value){
@@ -346,8 +377,7 @@ function postData(body) {
     xhr.open('post', 'mail.php', true)
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhr.onreadystatechange = function() {
-        modalCalc.style.display = "block"
-        setTimeout(function(){ modalCalc.style.display = "none"; }, 2000);
+        showModalSuccess()
     };
     xhr.send(body)
 }
@@ -357,3 +387,13 @@ $('body').on('click', '.arrows', function () {
     $('.arrows').eq(indexArrow).toggleClass('js-active');
     $('.spoiler-calc').eq(indexArrow).slideToggle(500);
 });
+
+function showModalSuccess() {
+    $('#modal-calc').fadeIn(500);
+    setTimeout(function(){ $('#modal-calc').fadeOut(500) }, 3000);
+}
+
+function showModalError() {
+    $('#modal-calc-err').fadeIn(500);
+    setTimeout(function(){ $('#modal-calc-err').fadeOut(500) }, 3000);
+}
