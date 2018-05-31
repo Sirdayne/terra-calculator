@@ -58,6 +58,9 @@ table {
     background: var(--back-color);
     color: var(--font-color);
 }
+#calculator .margin-top{
+    margin-top: 25px;
+}
 #mouseTooltip{
     display: none;
     position: absolute;
@@ -177,10 +180,9 @@ table {
 #calculator .btn-container{
     float: left;
     width: 100%;
-    margin-top: 30px;
     text-align: center;
 }
-#calculator .calc-btn{
+#calculator .btn-calc{
     display: inline-block;
     padding: 7px 20px;
     font-size: 14px;
@@ -190,14 +192,14 @@ table {
     cursor: pointer;
     transition: .3s linear;
 }
-#calculator .calc-btn.big{
+#calculator .btn-calc.big{
     padding: 13px 33px;
 }
-#calculator .calc-btn:hover{
+#calculator .btn-calc:hover{
     background: var(--primary-color);
     color: var(--main-color);
 }
-#calculator .calc-btn:active{
+#calculator .btn-calc:active{
     background-color: var(--main-color);
     outline: none;
   }
@@ -206,6 +208,40 @@ table {
     width: 60px;
     margin: 0;
     font-size: 16px;
+}
+#calculator .form-privacy{
+    float: left;
+    width: 50%;
+    margin: 25px 25%;
+    padding: 20px 30px;
+    background: #fff;
+    box-sizing: border-box;
+}
+#calculator .form-privacy h6{
+    float: left;
+    width: 100%;
+    text-align: center;
+    margin: 5px 0 25px;
+    font-size: 17px;
+    font-weight: bold;
+    color: var(--main-color)
+}
+#calculator .form-privacy .fp-row{
+    float: left;
+    width: 100%;
+    margin-bottom: 20px;
+}
+#calculator .form-privacy .fp-row p{
+    float: left;
+    width: 140px;
+}
+#calculator .form-privacy .fp-row input{
+    float: left;
+    height: 30px;
+    width: 100%;
+    padding: 5px;
+    margin-top: 8px;
+    box-sizing: border-box;
 }
 
 @media only screen and (max-width : 1100px) {
