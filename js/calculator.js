@@ -157,6 +157,44 @@ function countCheckboxes() {
     }
 }
 
+function addStr(name, value){
+    body += name + encodeURIComponent(value)
+}
+
+function getData() {
+    var xhr = new XMLHttpRequest
+    xhr.open('post', 'get.php', true)
+
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && xhr.status == 200){
+            var json = JSON.parse(xhr.responseText)
+            console.log(json)
+        }
+    };
+
+    xhr.send()
+}
+
+function postData(body) {
+    var xhr = new XMLHttpRequest
+    xhr.open('post', 'mail.php', true)
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.onreadystatechange = function() {
+        showModalSuccess()
+    };
+    xhr.send(body)
+}
+
+function showModalSuccess() {
+    $('#modal-calc').fadeIn(500);
+    setTimeout(function(){ $('#modal-calc').fadeOut(500) }, 3000);
+}
+
+function showModalError() {
+    $('#modal-calc-err').fadeIn(500);
+    setTimeout(function(){ $('#modal-calc-err').fadeOut(500) }, 3000);
+}
+
 /* EVENTS */
 
 btnCalculator.onclick = function(e) {
@@ -354,46 +392,8 @@ btnPost.onclick = function(e) {
     }
 }
 
-function addStr(name, value){
-    body += name + encodeURIComponent(value)
-}
-
-function getData() {
-    var xhr = new XMLHttpRequest
-    xhr.open('post', 'get.php', true)
-
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState == 4 && xhr.status == 200){
-            var json = JSON.parse(xhr.responseText)
-            console.log(json)
-        }
-    };
-
-    xhr.send()
-}
-
-function postData(body) {
-    var xhr = new XMLHttpRequest
-    xhr.open('post', 'mail.php', true)
-    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    xhr.onreadystatechange = function() {
-        showModalSuccess()
-    };
-    xhr.send(body)
-}
-
 $('body').on('click', '.arrows', function () {
     var indexArrow = $('.arrows').index(this);
     $('.arrows').eq(indexArrow).toggleClass('js-active');
     $('.spoiler-calc').eq(indexArrow).slideToggle(500);
 });
-
-function showModalSuccess() {
-    $('#modal-calc').fadeIn(500);
-    setTimeout(function(){ $('#modal-calc').fadeOut(500) }, 3000);
-}
-
-function showModalError() {
-    $('#modal-calc-err').fadeIn(500);
-    setTimeout(function(){ $('#modal-calc-err').fadeOut(500) }, 3000);
-}
