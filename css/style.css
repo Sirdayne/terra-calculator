@@ -61,6 +61,25 @@ table {
 #calculator .margin-top{
     margin-top: 25px;
 }
+#calculator #modalCalc{
+    position: fixed;
+    display: none;
+    top: 150px;
+    left: calc(50% - 150px);
+    width: 300px;
+    padding: 25px;
+    text-align: center;
+    box-sizing: border-box;
+    font-size: 18px;
+    font-weight: bold;
+    background: var(--primary-color);
+    border: 1px solid var(--font-color);
+    color: var(--main-color);
+    transition: .3 linear;
+}
+#calculator .spoiler-calc{
+    display: none
+}
 #mouseTooltip{
     display: none;
     position: absolute;
@@ -103,7 +122,41 @@ table {
 #calculator .title-calc{
     float: left;
     width: 100%;
-    margin: 30px 0;
+    margin: 30px 0 0;
+}
+#calculator .arrows{
+    float: left;
+    width: 20px;
+    height: 20px;
+    margin-right: 15px;
+    position: relative;
+    cursor: pointer;
+}
+#calculator .arrow-left, #calculator .arrow-right{
+    position: absolute;
+    top: 2px;
+    height: 13px;
+    width: 2px;
+    background: rgb(112, 112, 112)
+}
+#calculator .arrow-left{
+    left: 14px;
+    transform: rotate(45deg);
+}
+#calculator .arrow-right{
+    left: 6px;
+    transform: rotate(-45deg);
+}
+#calculator .arrows:hover .arrow-left, #calculator .arrows:hover .arrow-right{
+    background: var(--main-color)
+}
+#calculator .js-active .arrow-left{
+    left: 14px;
+    transform: rotate(135deg);
+}
+#calculator .js-active .arrow-right{
+    left: 6px;
+    transform: rotate(-135deg);
 }
 #calculator .title-calc p{
     float: left;
@@ -120,6 +173,7 @@ table {
 #calculator .questions{
     float: left;
     width: 100%;
+    margin-top: 30px;
     border-top: 1px solid var(--main-color);
 }
 #calculator .question{

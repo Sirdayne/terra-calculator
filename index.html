@@ -9,6 +9,7 @@
 
 <body>
     <section id="calculator">
+        <div id="modalCalc">Успешно отправлено!</div>
         <div id="mouseTooltip"></div>
         <div class="calculator__container">
             <h4>Калькулятор</h4>
@@ -22,9 +23,13 @@
             </p>
 
             <div class="title-calc">
+                <div class="arrows">
+                    <div class="arrow-left"></div>
+                    <div class="arrow-right"></div>
+                </div>
                 <p>Ответьте пожалуйста на следующие вопросы:</p>
             </div>
-            <div class="questions">
+            <div class="questions spoiler-calc">
                 <div class="question">
                     <div class="ask">
                         <p>Какова у вас посевная площадь?</p>    
@@ -117,9 +122,13 @@
                 </div>
             </div>
             <div class="title-calc">
+                <div class="arrows">
+                    <div class="arrow-left"></div>
+                    <div class="arrow-right"></div>
+                </div>
                 <p>Базовые допушения. Если вы с ними не согласны можете откорректировать:</p>
             </div>
-            <div class="questions">
+            <div class="questions spoiler-calc">
                 <div class="question">
                     <div class="ask">
                         <p>Сколько камер видеонаблюдения вы хотели бы установить</p>    
@@ -249,9 +258,13 @@
             </div>
             
             <div class="title-calc">
+                <div class="arrows">
+                    <div class="arrow-left"></div>
+                    <div class="arrow-right"></div>
+                </div>
                 <p>Что из новых технологий вы бы хотели применить у себя, отметьте галочкой:</p>
             </div>
-            <div class="questions">
+            <div class="questions spoiler-calc">
                 <div class="question">
                     <div class="ask">
                         <span class="icon-ask">
@@ -603,6 +616,7 @@
             </div>
         </div>   
     </section>
+<script src="js/jquery-3.3.1.min.js"></script>    
 <script src="js/calculator.js"></script>
 </body>
 </html>

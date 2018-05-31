@@ -298,5 +298,16 @@ function postData(body) {
     var xhr = new XMLHttpRequest
     xhr.open('post', 'mail.php', true)
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.onreadystatechange = function() {
+        modalCalc.style.display = "block"
+        setTimeout(function(){ modalCalc.style.display = "none"; }, 2000);
+    };
     xhr.send(body)
 }
+
+$('body').on('click', '.arrows', function () {
+    var indexArrow = $('.arrows').index(this);
+    console.log(this)
+    $('.arrows').eq(indexArrow).toggleClass('js-active');
+    $('.spoiler-calc').eq(indexArrow).slideToggle(500);
+});
