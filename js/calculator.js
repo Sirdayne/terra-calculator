@@ -163,63 +163,63 @@ btnCalculator.onclick = function(e) {
     setDataInputs()
     getDataInputs()
 
-    sumIncomeAnimal = valHeads * valAverageNadoi * valAverageRealization * valPercentNadoi
-    setHTML(incomeAnimal, sumIncomeAnimal)
-
-    sumIncomePlant = valAverageYield * valPercentYield * valSowingArea / 10 * valRealizationTonne + (valAverageYield + valAverageYield * valPercentYield * valSowingArea / 10) * valAverageRefaction * valPercentRefaction * valRealizationTonne + valAverageTMC * valPercentTMC * valSowingArea 
-    setHTML(incomePlant, sumIncomePlant)
-    
-    sumIncomeHuman = valVacanciesMonth * 12 * valVacancies + valAverageTMC * valPercentNotEffectiveTMC * valSowingArea
-    setHTML(incomeHuman, sumIncomeHuman)
-    
-    sumIncomeThief = valThiefSeason * 35 * valRealizationTonne + valAverageTMC * valPercentTMCSeason * valSowingArea
-    setHTML(incomeThief, sumIncomeThief)
-
-    sumTotalIncome = sumIncomeAnimal + sumIncomeHuman + sumIncomePlant + sumIncomeThief 
-    setHTML(incomeTotal, sumTotalIncome)
-
+    //GPS-мониторинг техники
     sumMultiGPS = boolGPS ? 60000 * valVehicles : 0
     setHTML(multiGPS, sumMultiGPS)
 
+    //Автопилоты и курсоуказатели для сельхозтехники
     sumMultiPilot = boolPilot ? 3500000 * valVehicles : 0
     setHTML(multiPilot, sumMultiPilot)
 
+    //IP видеонаблюдение
     sumMultiVideo = boolVideo ? 1000000 * valCameras : 0
     setHTML(multiVideo, sumMultiVideo)
 
+    //Контроль, учет движения зерна на току
     sumMultiControl = boolControl ? 3700000 * (valElectronic + valDesireElectronic) : 0
     setHTML(multiControl, sumMultiControl)
 
+    //Картирование полей на БПЛА
     sumMultiKart = boolKart ? 112 * valSowingArea : 0
     setHTML(multiKart, sumMultiKart)
 
+    //Контроль вегетации (NDVI) на БПЛА
     sumMultiNDVI = boolNDVI ? 150 * valSowingArea * 3 : 0
     setHTML(multiNDVI, sumMultiNDVI)
 
+    //Чипирование для идентификации КРС
     sumMultiChip = boolChip ? 1000 * valHeads : 0
     setHTML(multiChip, sumMultiChip)
 
+    //Системы для внутреннего мониторинга здоровья, активности и питания КРС
     sumMultiMonitor = boolMonitor ? 60000 * valHeads : 0
     setHTML(multiMonitor, sumMultiMonitor)
 
+    //Влагомеры
     sumMultiWater = boolWater ? 3000000 * valDesireWater : 0
     setHTML(multiWater, sumMultiWater)
 
+    //Расходомеры
     sumMultiRashod = boolRashod ? 4500000 * valDesireRashod : 0
     setHTML(multiRashod, sumMultiRashod)
 
+    //Автоматизация элеваторов и сушилок
     sumMultiElevator = boolElevator ? 2000 * valVolumeElevator : 0
     setHTML(multiElevator, sumMultiElevator)
 
+    //Автоматизация уведомления об отключении оборудования
     sumMultiNotification = boolNotification ? 60000 : 0
     setHTML(multiNotification, sumMultiNotification)
-
+    
+    //Программное обеспечение по управлению производством
     sumMultiSoftware = boolSoftware ? 300 * valSowingArea : 0
     setHTML(multiSoftware, sumMultiSoftware)
 
+    //Внедрение программного обеспечения
     sumMultiProg = boolProg ? 300 * valSowingArea : 0
     setHTML(multiProg, sumMultiProg)
 
+    //Сервисное обслуживание
     countCheckboxes()
 
     sumMultiService = 600000
@@ -230,15 +230,39 @@ btnCalculator.onclick = function(e) {
      
     setHTML(multiService, sumMultiService)
 
+    //Капитальные расходы
     sumCapitalCost = sumMultiGPS + sumMultiPilot + sumMultiVideo + sumMultiControl + sumMultiKart + sumMultiChip + sumMultiMonitor + sumMultiWater + sumMultiRashod + sumMultiElevator + sumMultiProg
     setHTML(capitalCost, sumCapitalCost)
 
+    //Постоянные расходы
     sumConstantCost = sumMultiNDVI + sumMultiSoftware + sumMultiNotification + sumMultiService
     setHTML(constantCost, sumConstantCost)
 
+    //Итого расходов на новые технологии
     sumTotalCost = sumCapitalCost + sumConstantCost
     setHTML(totalCost, sumTotalCost)
 
+    //Животноводство
+    sumIncomeAnimal = valHeads * valAverageNadoi * valAverageRealization * valPercentNadoi
+    setHTML(incomeAnimal, sumIncomeAnimal)
+
+    //Растениеводство
+    sumIncomePlant = valAverageYield * valPercentYield * valSowingArea / 10 * valRealizationTonne + (valAverageYield + valAverageYield * valPercentYield * valSowingArea / 10) * valAverageRefaction * valPercentRefaction * valRealizationTonne + valAverageTMC * valPercentTMC * valSowingArea 
+    setHTML(incomePlant, sumIncomePlant)
+    
+    //Человеческий фактор
+    sumIncomeHuman = valVacanciesMonth * 12 * valVacancies + valAverageTMC * valPercentNotEffectiveTMC * valSowingArea
+    setHTML(incomeHuman, sumIncomeHuman)
+
+    //Кражи
+    sumIncomeThief = valThiefSeason * 35 * valRealizationTonne + valAverageTMC * valPercentTMCSeason * valSowingArea
+    setHTML(incomeThief, sumIncomeThief)
+
+    //Итого доходов на новые технологии за сезон
+    sumTotalIncome = sumIncomeAnimal + sumIncomeHuman + sumIncomePlant + sumIncomeThief 
+    setHTML(incomeTotal, sumTotalIncome)
+
+    //Окупаемость (количество сезонов)
     sumRecoupment = sumTotalIncome / sumTotalCost
     setHTML(recoupment, sumRecoupment, true)
 }
@@ -271,7 +295,30 @@ btnPost.onclick = function(e) {
     addStr('&Должность=', strPos)
     addStr('&Организация=', strOrg)
     addStr('&Краткое_описание=', strText)
-    addStr('&Цена=', sumTotalCost)
+    addStr('&GPS-мониторинг техники=', sumMultiGPS)
+    addStr('&Автопилоты и курсоуказатели для сельхозтехники=', sumMultiPilot)
+    addStr('&IP видеонаблюдение=', sumMultiVideo)
+    addStr('&Контроль, учет движения зерна на току=', sumMultiControl)
+    addStr('&Картирование полей на БПЛА=', sumMultiKart)
+    addStr('&Контроль вегетации (NDVI) на БПЛА=', sumMultiNDVI)
+    addStr('&Чипирование для идентификации КРС=', sumMultiChip)
+    addStr('&Системы для внутреннего мониторинга здоровья, активности и питания КРС=', sumMultiMonitor)
+    addStr('&Влагомеры=', sumMultiWater)
+    addStr('&Расходомеры=', sumMultiRashod)
+    addStr('&Автоматизация элеваторов и сушилок=', sumMultiElevator)
+    addStr('&Автоматизация уведомления об отключении оборудования=', sumMultiNotification)
+    addStr('&Программное обеспечение по управлению производством=', sumMultiSoftware)
+    addStr('&Внедрение программного обеспечения=', sumMultiProg)
+    addStr('&Сервисное обслуживание=', sumMultiService)
+    addStr('&Итого расходов на новые технологии=', sumTotalCost)
+    addStr('&Капитальные расходы=', sumCapitalCost)
+    addStr('&Постоянные расходы=', sumConstantCost)
+    addStr('&Итого доходов на новые технологии за сезон=', sumTotalIncome)
+    addStr('&Животноводство=', sumIncomeAnimal)
+    addStr('&Растениеводство=', sumIncomePlant)
+    addStr('&Человеческий_фактор=', sumIncomeHuman)
+    addStr('&Кражи=', sumIncomeThief)
+    addStr('&Окупаемость (количество сезонов)=', sumRecoupment)
 
     postData(body)
 }
@@ -307,7 +354,6 @@ function postData(body) {
 
 $('body').on('click', '.arrows', function () {
     var indexArrow = $('.arrows').index(this);
-    console.log(this)
     $('.arrows').eq(indexArrow).toggleClass('js-active');
     $('.spoiler-calc').eq(indexArrow).slideToggle(500);
 });
