@@ -42,6 +42,12 @@ var boolSoftware = 0
 var boolProg = 0
 var boolService = 0
 
+var strName = ''
+var strPhone = ''
+var strPos = ''
+var strOrg = ''
+var strText = ''
+
 var sumIncomeAnimal = 0
 var sumIncomePlant = 0
 var sumIncomeHuman = 0
@@ -100,6 +106,12 @@ function getDataInputs() {
     boolNotification = parseBool(checkNotification)
     boolSoftware = parseBool(checkSoftware)
     boolProg = parseBool(checkProg)
+
+    strName = formName.value
+    strPhone = formPhone.value
+    strPos = formPos.value
+    strOrg = formOrg.value
+    strText = formText.value
 }
 
 function setDataInputs() {
@@ -247,4 +259,44 @@ for (var i = 0; i < iconAsks.length; i++) {
         mouseTooltip.innerHTML = ''
         mouseTooltip.style.display = 'none'
     }
+}
+
+var body = ''
+
+btnPost.onclick = function(e) {
+    getDataInputs()
+
+    addStr('ФИО=', strName)
+    addStr('&Телефон=', strPhone)
+    addStr('&Должность=', strPos)
+    addStr('&Организация=', strOrg)
+    addStr('&Краткое_описание=', strText)
+    addStr('&Цена=', sumTotalCost)
+
+    postData(body)
+}
+
+function addStr(name, value){
+    body += name + encodeURIComponent(value)
+}
+
+function getData() {
+    var xhr = new XMLHttpRequest
+    xhr.open('post', 'get.php', true)
+
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && xhr.status == 200){
+            var json = JSON.parse(xhr.responseText)
+            console.log(json)
+        }
+    };
+
+    xhr.send()
+}
+
+function postData(body) {
+    var xhr = new XMLHttpRequest
+    xhr.open('post', 'mail.php', true)
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.send(body)
 }

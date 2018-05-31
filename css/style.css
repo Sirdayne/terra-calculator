@@ -43,8 +43,8 @@ table {
 }
 /* variables */
 :root {
-    --main-color: #21821f;
-    --back-color: #f7f7f7;
+    --main-color: #008080;
+    --back-color: rgba(0, 0, 0 , 0);
     --primary-color: #fff;
     --secondary-color: #dedede;
     --font-color: #323232;
