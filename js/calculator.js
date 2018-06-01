@@ -107,7 +107,7 @@ function getDataInputs() {
     boolSoftware = parseBool(checkSoftware)
     boolProg = parseBool(checkProg)
 
-    strName = formName.value
+    strName = formFIO.value
     strPhone = formPhone.value
     strPos = formPos.value
     strOrg = formOrg.value
@@ -158,6 +158,7 @@ function countCheckboxes() {
 }
 
 function addStr(name, value){
+    value = value ? value : 'не заполнено'
     body += name + encodeURIComponent(value)
 }
 
@@ -168,7 +169,6 @@ function getData() {
     xhr.onreadystatechange = function() {
         if (xhr.readyState == 4 && xhr.status == 200){
             var json = JSON.parse(xhr.responseText)
-            console.log(json)
         }
     };
 
@@ -327,6 +327,8 @@ var body = ''
 
 btnPost.onclick = function(e) {
     getDataInputs()
+
+    body = ''
 
     try {
         addStr('ФИО=', strName)
