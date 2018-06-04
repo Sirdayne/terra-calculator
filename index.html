@@ -25,14 +25,38 @@
                 Становитесь нашими клиентами и партнерами! 
             </p>
 
+            <div class="form-privacy">
+                <h6>Заполните личные данные:</h6>
+                <div class="fp-row">
+                    <p>ФИО:</p>
+                    <input type="text" id="formFIO">
+                </div>
+                <div class="fp-row">
+                    <p>Телефон:</p>
+                    <input type="text" id="formPhone">
+                </div>
+                <div class="fp-row">
+                    <p>Должность:</p>
+                    <input type="text" id="formPos">
+                </div>
+                <div class="fp-row">
+                    <p>Организация:</p>
+                    <input type="text" id="formOrg">
+                </div>
+                <div class="fp-row">
+                    <p>Краткое описание:</p>
+                    <input type="text" id="formText">
+                </div>
+            </div>
+
             <div class="title-calc">
-                <div class="arrows">
+                <div class="arrows js-active">
                     <div class="arrow-left"></div>
                     <div class="arrow-right"></div>
                 </div>
                 <p>Ответьте пожалуйста на следующие вопросы:</p>
             </div>
-            <div class="questions spoiler-calc">
+            <div class="questions spoiler-calc" style="display: block">
                 <div class="question">
                     <div class="ask">
                         <p>Какова у вас посевная площадь?</p>    
@@ -84,7 +108,7 @@
                     </div>
                     <div class="answer">
                         <input type="number" id="inputVolumeElevator">
-                        <p></p>
+                        <p>тонн</p>
                     </div>
                 </div>
                 <div class="question">
@@ -111,7 +135,7 @@
                     </div>
                     <div class="answer">
                         <input type="number" id="inputAverageNadoi">
-                        <p></p>
+                        <p>литров</p>
                     </div>
                 </div>                                                                                    
                 <div class="question">
@@ -120,7 +144,7 @@
                     </div>
                     <div class="answer">
                         <input type="number" id="inputAverageRealization">
-                        <p></p>
+                        <p>кг</p>
                     </div>
                 </div>
             </div>
@@ -137,7 +161,7 @@
                         <p>Сколько камер видеонаблюдения вы хотели бы установить</p>    
                     </div>
                     <div class="answer">
-                        <input type="number" id="inputCameras">
+                        <input type="number" id="inputCameras" value="10">
                         <p>шт.</p>
                     </div>
                 </div>
@@ -146,7 +170,7 @@
                         <p>Средние расходы ТМЦ на 1 га (ГСМ, семена, химия)</p>    
                     </div>
                     <div class="answer">
-                        <input type="number" id="inputAverageTMC">
+                        <input type="number" id="inputAverageTMC" value="20000">
                         <p>тг.</p>
                     </div>
                 </div>
@@ -155,7 +179,7 @@
                         <p>Количество краж зерна в машинах за 1 сезон</p>    
                     </div>
                     <div class="answer">
-                        <input type="number" id="inputThiefSeason">
+                        <input type="number" id="inputThiefSeason" value="1">
                         <p>шт.</p>
                     </div>
                 </div>
@@ -164,7 +188,7 @@
                         <p>Доля краж ТМЦ за 1 сезон</p>    
                     </div>
                     <div class="answer">
-                        <input type="number" id="inputPercentTMCSeason" max="100">
+                        <input type="number" id="inputPercentTMCSeason" max="100" value="5">
                         <p>%</p>
                     </div>
                 </div>
@@ -173,7 +197,7 @@
                         <p>Количество вакансий на более квалифицированный персонал</p>    
                     </div>
                     <div class="answer">
-                        <input type="number" id="inputVacancies">
+                        <input type="number" id="inputVacancies" value="3">
                         <p>шт.</p>
                     </div>
                 </div>
@@ -182,7 +206,7 @@
                         <p>Расходы на 1 вакансию в месяц (зарплата с налогами, проживание, питание)</p>    
                     </div>
                     <div class="answer">
-                        <input type="number" id="inputVacanciesMonth">
+                        <input type="number" id="inputVacanciesMonth" value="200000">
                         <p>тг.</p>
                     </div>
                 </div>
@@ -191,7 +215,7 @@
                         <p>Доля неээфективных расходов ТМЦ на 1 га, из за "человеческого фактора"</p>    
                     </div>
                     <div class="answer">
-                        <input type="number" id="inputPercentNotEffectiveTMC" max="100">
+                        <input type="number" id="inputPercentNotEffectiveTMC" max="100" value="30">
                         <p>%</p>
                     </div>
                 </div>
@@ -200,7 +224,7 @@
                         <p>Сколько электронных весов вы бы хотели установить </p>    
                     </div>
                     <div class="answer">
-                        <input type="number" id="inputDesireElectronic">
+                        <input type="number" id="inputDesireElectronic" value="0">
                         <p>шт.</p>
                     </div>
                 </div>
@@ -209,7 +233,7 @@
                         <p>Сколько влагомеров вы бы хотели установить на элеваторе</p>    
                     </div>
                     <div class="answer">
-                        <input type="number" id="inputDesireWater">
+                        <input type="number" id="inputDesireWater" value="1">
                         <p>шт.</p>
                     </div>
                 </div>
@@ -218,7 +242,7 @@
                         <p>Сколько расходомеров вы бы хотели установить на элеваторе</p>    
                     </div>
                     <div class="answer">
-                        <input type="number" id="inputDesireRashod">
+                        <input type="number" id="inputDesireRashod" value="2">
                         <p>шт.</p>
                     </div>
                 </div>
@@ -227,7 +251,7 @@
                         <p>Контроль технологии позволит увеличить урожайность </p>    
                     </div>
                     <div class="answer">
-                        <input type="number" id="inputPercentYield" max="100">
+                        <input type="number" id="inputPercentYield" max="100" value="10">
                         <p>%</p>
                     </div>
                 </div>
@@ -236,7 +260,7 @@
                         <p>Контроль технологии позволит увеличить надой/привес</p>    
                     </div>
                     <div class="answer">
-                        <input type="number" id="inputPercentNadoi" max="100">
+                        <input type="number" id="inputPercentNadoi" max="100" value="10">
                         <p>%</p>
                     </div>
                 </div>
@@ -245,7 +269,7 @@
                         <p>Контроль технологии позволит сократить рефакцию</p>    
                     </div>
                     <div class="answer">
-                        <input type="number" id="inputPercentRefaction" max="100">
+                        <input type="number" id="inputPercentRefaction" max="100" value="50">
                         <p>%</p>
                     </div>
                 </div>
@@ -254,7 +278,7 @@
                         <p>Контроль технологии позволит сократить расходы на ТМЦ</p>    
                     </div>
                     <div class="answer">
-                        <input type="number" id="inputPercentTMC" max="100">
+                        <input type="number" id="inputPercentTMC" max="100" value="10">
                         <p>%</p>
                     </div>
                 </div>
@@ -541,7 +565,7 @@
                 </div>
                 <div class="question">
                     <div class="ask">
-                        <p>Постоянные расходы</p>    
+                        <p>Накладные расходы</p>    
                     </div>
                     <div class="answer">
                         <div id="constantCost"></div>
@@ -591,32 +615,6 @@
                 <span class="total" id="recoupment"></span>
             </div>
 
-            <div class="form-privacy">
-                <h6>Заполните личные данные:</h6>
-                <div class="fp-row">
-                    <p>ФИО:</p>
-                    <input type="text" id="formFIO">
-                </div>
-                <div class="fp-row">
-                    <p>Телефон:</p>
-                    <input type="text" id="formPhone">
-                </div>
-                <div class="fp-row">
-                    <p>Должность:</p>
-                    <input type="text" id="formPos">
-                </div>
-                <div class="fp-row">
-                    <p>Организация:</p>
-                    <input type="text" id="formOrg">
-                </div>
-                <div class="fp-row">
-                    <p>Краткое описание:</p>
-                    <input type="text" id="formText">
-                </div>
-                <div class="btn-container">
-                    <button class="btn-calc big" id="btnPost">Заказать</button>
-                </div>
-            </div>
         </div>   
     </section>
 <script src="js/jquery-3.3.1.min.js"></script>    

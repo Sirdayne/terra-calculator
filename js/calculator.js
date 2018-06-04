@@ -1,4 +1,4 @@
-/* DATA */
+/* data */
 
 var valSowingArea = 0
 var valRealizationTonne = 0
@@ -64,6 +64,8 @@ var sumMultiGPS = 0
 var checkCounter = 0
 
 var iconAsks = document.getElementsByClassName('icon-ask')
+
+/* methods */
 
 function getDataInputs() {
     valSowingArea = parseValue(inputSowingArea)
@@ -195,9 +197,9 @@ function showModalError() {
     setTimeout(function(){ $('#modal-calc-err').fadeOut(500) }, 3000);
 }
 
-/* EVENTS */
+/* events */
 
-btnCalculator.onclick = function(e) {
+function calculateData() {
     //setDataInputs()
     getDataInputs()
 
@@ -325,8 +327,9 @@ for (var i = 0; i < iconAsks.length; i++) {
 
 var body = ''
 
-btnPost.onclick = function(e) {
-    getDataInputs()
+btnCalculator.onclick = function(e) {
+
+    calculateData()
 
     body = ''
 
