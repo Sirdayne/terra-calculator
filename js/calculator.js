@@ -109,11 +109,22 @@ function getDataInputs() {
     boolSoftware = parseBool(checkSoftware)
     boolProg = parseBool(checkProg)
 
-    strName = formFIO.value
-    strPhone = formPhone.value
-    strPos = formPos.value
-    strOrg = formOrg.value
-    strText = formText.value
+    strName = validateData(formFIO)
+    strPhone = validateData(formPhone)
+    strPos = validateData(formPos)
+    strOrg = validateData(formOrg)
+    strText = validateData(formText)
+}
+
+function validateData(item) {
+    var output = item.value
+    if (output === '') {
+        item.style.border = "1px solid rgb(230, 20, 20)"
+        throw new Error()
+    } else {
+        item.style.border = "1px solid #323232"
+    }
+    return output
 }
 
 function setDataInputs() {
@@ -200,8 +211,6 @@ function showModalError() {
 /* events */
 
 function calculateData() {
-    //setDataInputs()
-    getDataInputs()
 
     //GPS-мониторинг техники
     sumMultiGPS = boolGPS ? 60000 * valVehicles : 0
@@ -329,11 +338,13 @@ var body = ''
 
 btnCalculator.onclick = function(e) {
 
-    calculateData()
-
     body = ''
 
     try {
+        //setDataInputs()
+        getDataInputs()
+        calculateData()
+
         addStr('ФИО=', strName)
         addStr('&Телефон=', strPhone)
         addStr('&Должность=', strPos)
