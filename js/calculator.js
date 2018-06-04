@@ -75,24 +75,24 @@ function getDataInputs() {
     valElectronic = parseValue(inputElectronic)
     valVolumeElevator = parseValue(inputVolumeElevator)
     valAverageYield = parseValue(inputAverageYield)
-    valAverageRefaction = parseValue(inputAverageRefaction)
+    valAverageRefaction = parseValue(inputAverageRefaction, true)
     valAverageNadoi = parseValue(inputAverageNadoi)
     valAverageRealization = parseValue(inputAverageRealization)
 
     valCameras = parseValue(inputCameras)
     valAverageTMC = parseValue(inputAverageTMC)
     valThiefSeason = parseValue(inputThiefSeason)
-    valPercentTMCSeason = parseValue(inputPercentTMCSeason)
+    valPercentTMCSeason = parseValue(inputPercentTMCSeason, true)
     valVacancies = parseValue(inputVacancies) 
     valVacanciesMonth = parseValue(inputVacanciesMonth) 
-    valPercentNotEffectiveTMC = parseValue(inputPercentNotEffectiveTMC) 
+    valPercentNotEffectiveTMC = parseValue(inputPercentNotEffectiveTMC, true)
     valDesireElectronic = parseValue(inputDesireElectronic) 
     valDesireWater = parseValue(inputDesireWater) 
     valDesireRashod = parseValue(inputDesireRashod) 
-    valPercentYield = parseValue(inputPercentYield) 
-    valPercentNadoi = parseValue(inputPercentNadoi) 
-    valPercentRefaction = parseValue(inputPercentRefaction) 
-    valPercentTMC = parseValue(inputPercentTMC) 
+    valPercentYield = parseValue(inputPercentYield, true) 
+    valPercentNadoi = parseValue(inputPercentNadoi, true)
+    valPercentRefaction = parseValue(inputPercentRefaction, true)
+    valPercentTMC = parseValue(inputPercentTMC, true)
 
     boolGPS = parseBool(checkGPS)
     boolPilot = parseBool(checkPilot)
@@ -108,7 +108,9 @@ function getDataInputs() {
     boolNotification = parseBool(checkNotification)
     boolSoftware = parseBool(checkSoftware)
     boolProg = parseBool(checkProg)
+}
 
+function getFormInputs() {
     strName = validateData(formFIO)
     strPhone = validateData(formPhone)
     strPos = validateData(formPos)
@@ -128,18 +130,23 @@ function validateData(item) {
 }
 
 function setDataInputs() {
-    var inputs = document.getElementsByTagName('input')
-    for (var j = 0; j < inputs.length; j++){
-        if (inputs[j].type === 'number'){
-            inputs[j].value = j + 1
-        } else {
-            //inputs[j].checked = true
-        }
-    }
+    inputSowingArea.value = 5000
+    inputRealizationTonne.value = 50000
+    inputHeads.value = 1000
+    inputVehicles.value = 30
+    inputElectronic.value = 1
+    inputVolumeElevator.value = 10000
+    inputAverageYield.value = 15
+    inputAverageRefaction.value = 4
+    inputAverageNadoi.value = 4500
+    inputAverageRealization.value = 120
 }
 
-function parseValue(tag) {
-    return parseInt(tag.value)
+function parseValue(tag, percent) {
+    if (percent)
+        return parseInt(tag.value) / 100
+    else 
+        return parseInt(tag.value)
 }
 
 function parseBool(tag) {
@@ -148,9 +155,8 @@ function parseBool(tag) {
 
 function setHTML(tag, sum, currency) {
     if (sum) {
-        //.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,')
         if (currency){
-            tag.innerHTML = sum
+            tag.innerHTML = sum.toFixed(2)
         } else {
             sum = sum.toFixed().replace(/(\d)(?=(\d{3})+(,|$))/g, '$1,');
             tag.innerHTML = sum + ' тг.'
@@ -208,8 +214,6 @@ function showModalError() {
     setTimeout(function(){ $('#modal-calc-err').fadeOut(500) }, 3000);
 }
 
-/* events */
-
 function calculateData() {
 
     //GPS-мониторинг техники
@@ -221,7 +225,7 @@ function calculateData() {
     setHTML(multiPilot, sumMultiPilot)
 
     //IP видеонаблюдение
-    sumMultiVideo = boolVideo ? 1000000 * valCameras : 0
+    sumMultiVideo = boolVideo ? 100000 * valCameras : 0
     setHTML(multiVideo, sumMultiVideo)
 
     //Контроль, учет движения зерна на току
@@ -283,7 +287,7 @@ function calculateData() {
     sumCapitalCost = sumMultiGPS + sumMultiPilot + sumMultiVideo + sumMultiControl + sumMultiKart + sumMultiChip + sumMultiMonitor + sumMultiWater + sumMultiRashod + sumMultiElevator + sumMultiProg
     setHTML(capitalCost, sumCapitalCost)
 
-    //Постоянные расходы
+    //Накладные расходы
     sumConstantCost = sumMultiNDVI + sumMultiSoftware + sumMultiNotification + sumMultiService
     setHTML(constantCost, sumConstantCost)
 
@@ -316,6 +320,71 @@ function calculateData() {
     setHTML(recoupment, sumRecoupment, true)
 }
 
+var body = ''
+
+function prepareData() {
+    body = ''
+
+    addStr('ФИО=', strName)
+    addStr('&Телефон=', strPhone)
+    addStr('&Должность=', strPos)
+    addStr('&Организация=', strOrg)
+    addStr('&Краткое_описание=', strText)
+
+    addStr('&Какова у вас посевная площадь?=', valSowingArea)
+    addStr('&Какова у вас средняя реализация 1 тонны товарного зерна=', valRealizationTonne)
+    addStr('&Количество голов?=', valHeads)
+    addStr('&Количество техники, которые необходимо контролировать?=', valVehicles)
+    addStr('&Количество электронных весов=', valElectronic)
+    addStr('&Объем хранения зерна на элеваторе=', valVolumeElevator)
+    addStr('&Какова средняя урожайность?=', valAverageYield)
+    addStr('&Какова средняя рефакция?=', valAverageRefaction)
+    addStr('&Каков средний надой/привес 1 головы в год?=', valAverageNadoi)
+    addStr('&Какова средняя реализация 1 единицы мясо/молока?=', valAverageRealization)
+
+    addStr('&Сколько камер видеонаблюдения вы хотели бы установить=', valCameras)
+    addStr('&Средние расходы ТМЦ на 1 га (ГСМ, семена, химия)=', valAverageTMC)
+    addStr('&Количество краж зерна в машинах за 1 сезон=', valThiefSeason)
+    addStr('&Доля краж ТМЦ за 1 сезон=', valPercentTMCSeason)
+    addStr('&Количество вакансий на более квалифицированный персонал=', valVacancies)
+    addStr('&Расходы на 1 вакансию в месяц (зарплата с налогами, проживание, питание)=', valVacanciesMonth)
+    addStr('&Доля неээфективных расходов ТМЦ на 1 га, из за "человеческого фактора"=', valPercentNotEffectiveTMC)
+    addStr('&Сколько электронных весов вы бы хотели установить=', valDesireElectronic)
+    addStr('&Сколько влагомеров вы бы хотели установить на элеваторе=', valDesireWater)
+    addStr('&Сколько расходомеров вы бы хотели установить на элеваторе=', valDesireRashod)
+    addStr('&Контроль технологии позволит увеличить урожайность=', valPercentYield)
+    addStr('&Контроль технологии позволит увеличить надой/привес=', valPercentNadoi)
+    addStr('&Контроль технологии позволит сократить рефакцию=', valPercentRefaction)
+    addStr('&Контроль технологии позволит сократить расходы на ТМЦ=', valPercentTMC)
+    
+    addStr('&GPS-мониторинг техники=', sumMultiGPS)
+    addStr('&Автопилоты и курсоуказатели для сельхозтехники=', sumMultiPilot)
+    addStr('&IP видеонаблюдение=', sumMultiVideo)
+    addStr('&Контроль, учет движения зерна на току=', sumMultiControl)
+    addStr('&Картирование полей на БПЛА=', sumMultiKart)
+    addStr('&Контроль вегетации (NDVI) на БПЛА=', sumMultiNDVI)
+    addStr('&Чипирование для идентификации КРС=', sumMultiChip)
+    addStr('&Системы для внутреннего мониторинга здоровья, активности и питания КРС=', sumMultiMonitor)
+    addStr('&Влагомеры=', sumMultiWater)
+    addStr('&Расходомеры=', sumMultiRashod)
+    addStr('&Автоматизация элеваторов и сушилок=', sumMultiElevator)
+    addStr('&Автоматизация уведомления об отключении оборудования=', sumMultiNotification)
+    addStr('&Программное обеспечение по управлению производством=', sumMultiSoftware)
+    addStr('&Внедрение программного обеспечения=', sumMultiProg)
+    addStr('&Сервисное обслуживание=', sumMultiService)
+    addStr('&Итого расходов на новые технологии=', sumTotalCost)
+    addStr('&Капитальные расходы=', sumCapitalCost)
+    addStr('&Постоянные расходы=', sumConstantCost)
+    addStr('&Итого доходов на новые технологии за сезон=', sumTotalIncome)
+    addStr('&Животноводство=', sumIncomeAnimal)
+    addStr('&Растениеводство=', sumIncomePlant)
+    addStr('&Человеческий_фактор=', sumIncomeHuman)
+    addStr('&Кражи=', sumIncomeThief)
+    addStr('&Окупаемость (количество сезонов)=', sumRecoupment)
+}
+
+/* events */
+
 var OFFSET = 5
 var x = 0
 var y = 0
@@ -334,74 +403,13 @@ for (var i = 0; i < iconAsks.length; i++) {
     }
 }
 
-var body = ''
-
 btnCalculator.onclick = function(e) {
-
-    body = ''
-
     try {
         //setDataInputs()
         getDataInputs()
         calculateData()
-
-        addStr('ФИО=', strName)
-        addStr('&Телефон=', strPhone)
-        addStr('&Должность=', strPos)
-        addStr('&Организация=', strOrg)
-        addStr('&Краткое_описание=', strText)
-
-        addStr('&Какова у вас посевная площадь?=', valSowingArea)
-        addStr('&Какова у вас средняя реализация 1 тонны товарного зерна=', valRealizationTonne)
-        addStr('&Количество голов?=', valHeads)
-        addStr('&Количество техники, которые необходимо контролировать?=', valVehicles)
-        addStr('&Количество электронных весов=', valElectronic)
-        addStr('&Объем хранения зерна на элеваторе=', valVolumeElevator)
-        addStr('&Какова средняя урожайность?=', valAverageYield)
-        addStr('&Какова средняя рефакция?=', valAverageRefaction)
-        addStr('&Каков средний надой/привес 1 головы в год?=', valAverageNadoi)
-        addStr('&Какова средняя реализация 1 единицы мясо/молока?=', valAverageRealization)
-
-        addStr('&Сколько камер видеонаблюдения вы хотели бы установить=', valCameras)
-        addStr('&Средние расходы ТМЦ на 1 га (ГСМ, семена, химия)=', valAverageTMC)
-        addStr('&Количество краж зерна в машинах за 1 сезон=', valThiefSeason)
-        addStr('&Доля краж ТМЦ за 1 сезон=', valPercentTMCSeason)
-        addStr('&Количество вакансий на более квалифицированный персонал=', valVacancies)
-        addStr('&Расходы на 1 вакансию в месяц (зарплата с налогами, проживание, питание)=', valVacanciesMonth)
-        addStr('&Доля неээфективных расходов ТМЦ на 1 га, из за "человеческого фактора"=', valPercentNotEffectiveTMC)
-        addStr('&Сколько электронных весов вы бы хотели установить=', valDesireElectronic)
-        addStr('&Сколько влагомеров вы бы хотели установить на элеваторе=', valDesireWater)
-        addStr('&Сколько расходомеров вы бы хотели установить на элеваторе=', valDesireRashod)
-        addStr('&Контроль технологии позволит увеличить урожайность=', valPercentYield)
-        addStr('&Контроль технологии позволит увеличить надой/привес=', valPercentNadoi)
-        addStr('&Контроль технологии позволит сократить рефакцию=', valPercentRefaction)
-        addStr('&Контроль технологии позволит сократить расходы на ТМЦ=', valPercentTMC)
-        
-        addStr('&GPS-мониторинг техники=', sumMultiGPS)
-        addStr('&Автопилоты и курсоуказатели для сельхозтехники=', sumMultiPilot)
-        addStr('&IP видеонаблюдение=', sumMultiVideo)
-        addStr('&Контроль, учет движения зерна на току=', sumMultiControl)
-        addStr('&Картирование полей на БПЛА=', sumMultiKart)
-        addStr('&Контроль вегетации (NDVI) на БПЛА=', sumMultiNDVI)
-        addStr('&Чипирование для идентификации КРС=', sumMultiChip)
-        addStr('&Системы для внутреннего мониторинга здоровья, активности и питания КРС=', sumMultiMonitor)
-        addStr('&Влагомеры=', sumMultiWater)
-        addStr('&Расходомеры=', sumMultiRashod)
-        addStr('&Автоматизация элеваторов и сушилок=', sumMultiElevator)
-        addStr('&Автоматизация уведомления об отключении оборудования=', sumMultiNotification)
-        addStr('&Программное обеспечение по управлению производством=', sumMultiSoftware)
-        addStr('&Внедрение программного обеспечения=', sumMultiProg)
-        addStr('&Сервисное обслуживание=', sumMultiService)
-        addStr('&Итого расходов на новые технологии=', sumTotalCost)
-        addStr('&Капитальные расходы=', sumCapitalCost)
-        addStr('&Постоянные расходы=', sumConstantCost)
-        addStr('&Итого доходов на новые технологии за сезон=', sumTotalIncome)
-        addStr('&Животноводство=', sumIncomeAnimal)
-        addStr('&Растениеводство=', sumIncomePlant)
-        addStr('&Человеческий_фактор=', sumIncomeHuman)
-        addStr('&Кражи=', sumIncomeThief)
-        addStr('&Окупаемость (количество сезонов)=', sumRecoupment)
-
+        getFormInputs()
+        prepareData()
         postData(body)
     } catch(error) {
         showModalError()
