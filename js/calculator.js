@@ -170,7 +170,7 @@ function countCheckboxes() {
     var inputs = document.getElementsByTagName('input')
     checkCounter = 0
     for (var j = 0; j < inputs.length; j++){
-        if (inputs[j].type === 'checkbox' && inputs[j].checked) {
+        if (inputs[j].type === 'checkbox' && inputs[j].checked && inputs[j].id != "checkKart") {
             checkCounter++
         }
     }
@@ -405,7 +405,7 @@ for (var i = 0; i < iconAsks.length; i++) {
 
 btnCalculator.onclick = function(e) {
     try {
-        //setDataInputs()
+        setDataInputs()
         getDataInputs()
         calculateData()
         getFormInputs()
