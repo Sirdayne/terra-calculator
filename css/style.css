@@ -1,11 +1,11 @@
 /* variables */
 :root {
-    --main-color: #008080;
-    --back-color: rgba(0, 0, 0 , 0);
+    --main-color: #7ebb3b;
+    --back-color: rgba(0, 0, 0 ,0);
     --primary-color: #fff;
     --secondary-color: #dedede;
     --font-color: #323232;
-    --old-color: #f06d6e;
+    --old-color: #008080;
 }
 /* styles */
 #calculator{
