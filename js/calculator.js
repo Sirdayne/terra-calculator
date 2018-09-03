@@ -214,6 +214,11 @@ function showModalError() {
     setTimeout(function(){ $('#modal-calc-err').fadeOut(500) }, 3000);
 }
 
+function showModalError() {
+    $('#modal-calc-err').fadeIn(500);
+    setTimeout(function(){ $('#modal-calc-err').fadeOut(500) }, 3000);
+}
+
 function calculateData() {
 
     //GPS-мониторинг техники
@@ -316,7 +321,8 @@ function calculateData() {
     setHTML(incomeTotal, sumTotalIncome)
 
     //Окупаемость (количество сезонов)
-    sumRecoupment = sumTotalIncome / sumTotalCost
+    sumRecoupment = sumTotalCost / sumTotalIncome
+    console.log(sumTotalIncome, sumTotalCost)
     setHTML(recoupment, sumRecoupment, true)
 }
 
