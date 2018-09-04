@@ -64,6 +64,18 @@ var sumMultiGPS = 0
 var checkCounter = 0
 
 var iconAsks = document.getElementsByClassName('icon-ask')
+var inputs = document.getElementsByTagName('input')
+var spoilers = document.getElementsByClassName('spoiler-calc')
+var arrows = document.getElementsByClassName('arrows')
+
+for (var i = 0; i < inputs.length; i++) {
+   inputs[i].oninput  = function() {
+       for (var i = 0; i < arrows.length; i++) {
+           arrows[i].classList = 'arrows js-active'
+       }
+       $('.spoiler-calc').slideDown(500)
+   }
+}
 
 /* methods */
 
@@ -322,7 +334,6 @@ function calculateData() {
 
     //Окупаемость (количество сезонов)
     sumRecoupment = sumTotalCost / sumTotalIncome
-    console.log(sumTotalIncome, sumTotalCost)
     setHTML(recoupment, sumRecoupment, true)
 }
 
