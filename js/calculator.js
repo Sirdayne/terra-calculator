@@ -302,38 +302,56 @@ function calculateData() {
 
     //Капитальные расходы
     sumCapitalCost = sumMultiGPS + sumMultiPilot + sumMultiVideo + sumMultiControl + sumMultiKart + sumMultiChip + sumMultiMonitor + sumMultiWater + sumMultiRashod + sumMultiElevator + sumMultiProg
+    if (!sumCapitalCost)
+      sumCapitalCost = 0
     setHTML(capitalCost, sumCapitalCost)
 
     //Накладные расходы
     sumConstantCost = sumMultiNDVI + sumMultiSoftware + sumMultiNotification + sumMultiService
+    if (!sumConstantCost)
+        sumConstantCost = 0
     setHTML(constantCost, sumConstantCost)
 
     //Итого расходов на новые технологии
     sumTotalCost = sumCapitalCost + sumConstantCost
+    if (!sumTotalCost)
+        sumTotalCost = 0
     setHTML(totalCost, sumTotalCost)
 
     //Животноводство
     sumIncomeAnimal = valHeads * valAverageNadoi * valAverageRealization * valPercentNadoi
+    if (!sumIncomeAnimal)
+        sumIncomeAnimal = 0
     setHTML(incomeAnimal, sumIncomeAnimal)
 
     //Растениеводство
-    sumIncomePlant = valAverageYield * valPercentYield * valSowingArea / 10 * valRealizationTonne + (valAverageYield + valAverageYield * valPercentYield * valSowingArea / 10) * valAverageRefaction * valPercentRefaction * valRealizationTonne + valAverageTMC * valPercentTMC * valSowingArea 
+    sumIncomePlant = valAverageYield * valPercentYield * valSowingArea / 10 * valRealizationTonne + (valAverageYield + valAverageYield * valPercentYield * valSowingArea / 10) * valAverageRefaction * valPercentRefaction * valRealizationTonne + valAverageTMC * valPercentTMC * valSowingArea
+    if (!sumIncomePlant)
+        sumIncomePlant = 0
     setHTML(incomePlant, sumIncomePlant)
     
     //Человеческий фактор
     sumIncomeHuman = valVacanciesMonth * 12 * valVacancies + valAverageTMC * valPercentNotEffectiveTMC * valSowingArea
+    if (!sumIncomeHuman)
+        sumIncomeHuman = 0
     setHTML(incomeHuman, sumIncomeHuman)
 
     //Кражи
     sumIncomeThief = valThiefSeason * 35 * valRealizationTonne + valAverageTMC * valPercentTMCSeason * valSowingArea
+    if (!sumIncomeThief)
+        sumIncomeThief = 0
     setHTML(incomeThief, sumIncomeThief)
 
     //Итого доходов на новые технологии за сезон
-    sumTotalIncome = sumIncomeAnimal + sumIncomeHuman + sumIncomePlant + sumIncomeThief 
+    sumTotalIncome = sumIncomeAnimal + sumIncomeHuman + sumIncomePlant + sumIncomeThief
+    if (!sumTotalIncome)
+        sumTotalIncome = 0
     setHTML(incomeTotal, sumTotalIncome)
 
     //Окупаемость (количество сезонов)
     sumRecoupment = sumTotalCost / sumTotalIncome
+    if (!sumRecoupment)
+        sumRecoupment = 0
     setHTML(recoupment, sumRecoupment, true)
 }
 
@@ -422,7 +440,6 @@ for (var i = 0; i < iconAsks.length; i++) {
 
 btnCalculator.onclick = function(e) {
     try {
-        setDataInputs()
         getDataInputs()
         calculateData()
         getFormInputs()
